@@ -16,9 +16,6 @@
 #### DECLARE VARIABLES #############################################################################
 #
 #
-# ISV Partner's Project Root
-PARTNER_PROJECT_ROOT=~/projects/my-project
-
 # Package Version ID for the Partner's MAIN packaged app. Must begin with "04t".
 PARTNER_PACKAGE_VERSION_ID_01="04t1N000001IGiT"
 

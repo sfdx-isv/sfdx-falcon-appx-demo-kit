@@ -16,9 +16,6 @@
 ####################################################################################################
 #
 #
-# Saleforce Demo Installer's Project Root
-SALESFORCE_PROJECT_ROOT=~/FSC-QuickStart/FSC-QuickStart-2
-
 # Alias for the Salesforce-owned demo org that the Partner's app will be installed in.
 SALESFORCE_DEMO_ORG_ALIAS="SalesforceDemoOrg"
 

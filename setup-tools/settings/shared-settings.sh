@@ -12,9 +12,6 @@
 #### DECLARE VARIABLES #############################################################################
 #
 #
-# Project Root
-PROJECT_ROOT="~/FSC-QuickStart/FSC-QuickStart-2"
-
 # Git Remote URI. SSH or HTTPS URI that points to the Git remote repo used by this project.
 GIT_REMOTE_URI="https://github.com/VivekMChawla/FSC-QuickStart-2.git"
 
