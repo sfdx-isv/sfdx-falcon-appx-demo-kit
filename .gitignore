@@ -1,0 +1,20 @@
+# Ignore OS system files that are usually auto-added to directories
+[Tt]humbs.db
+.DS_Store
+
+# Ignore Salesforce DX config files
+.sfdx
+.salesforce
+
+# Ignore Eclipse config files
+.classpath
+.project
+.settings/
+
+# Ignore VSCode config files
+.vscode
+
+# Ignore Intellij config files
+.idea/
+*.iml
+*.iws
