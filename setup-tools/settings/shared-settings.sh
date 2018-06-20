@@ -13,7 +13,7 @@
 #
 #
 # Git Remote URI. SSH or HTTPS URI that points to the Git remote repo used by this project.
-GIT_REMOTE_URI="https://github.com/VivekMChawla/FSC-QuickStart-2.git"
+GIT_REMOTE_URI="<%-interviewAnswers.gitRemoteUri%>"
 
 # Echo the variables set by this script prior to exiting.  Specify "true" or "false".
 ECHO_LOCAL_CONFIG_VARS="true"
