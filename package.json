@@ -1,0 +1,26 @@
+{
+  "name": "sfdx-falcon-demo-template",
+  "description": "Specialized project scaffolding for creating standalone and integrated demo orgs using Salesforce DX.",
+  "version": "0.0.1",
+  "author": "Vivek M. Chawla @VivekMChawla",
+  "license": "MIT",
+  "bugs": "https://github.com/sfdx-isv/sfdx-falcon-demo-template/issues",
+  "homepage": "https://github.com/sfdx-isv/sfdx-falcon-demo-template",
+  "repository": "sfdx-isv/sfdx-falcon-demo-template",
+  "main": "sfdx-project.json",
+  "keywords": [
+    "salesforce", "sfdx-plugin", "sfdx-falcon", "sfdx"
+  ],
+  "files": [
+    "/demo-data",
+    "/manual-steps",
+    "/mdapi-source",
+    "/setup-tools",
+    ".gitignore",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "demo-scratch-def.json",
+    "sfdx-project.json"
+  ]
+}
