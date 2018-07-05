@@ -17,18 +17,18 @@
 #
 #
 # Package Version ID for the Partner's MAIN packaged app. Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_01="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_01="NOT_PRESENT"
 
 # Package Version ID for the Partner's SECOND packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_02="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_02="NOT_PRESENT"
 
 # Package Version ID for the Partner's THIRD packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_03="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_03="NOT_PRESENT"
 
 # Package Version ID for the Partner's FOURTH packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_04="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_04="NOT_PRESENT"
 
 # Package Version ID for the Partner's FIFTH packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_05="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_05="NOT_PRESENT"
 
 ##END##

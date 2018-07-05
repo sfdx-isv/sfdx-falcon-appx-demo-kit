@@ -45,8 +45,13 @@ confirmScriptExecution "Do you want to install the Partner's App in the Salesfor
 ###
 ##
 #
-TARGET_DEMO_ORG_ALIAS=$SALESFORCE_DEMO_ORG_ALIAS
-PROJECT_ROOT=$SALESFORCE_PROJECT_ROOT
+
+# Check if $TARGET_ORG_ALIAS has been overriden. 
+# If not, default to the Demo Installation Org.
+if [ -z "$TARGET_ORG_ALIAS" ]; then
+  TARGET_ORG_ALIAS=$DEMO_INSTALLATION_ORG_ALIAS
+fi
+
 #
 ##
 ###
@@ -62,30 +67,30 @@ resetStepMsgCounter 6
 ###
 ##
 #
-# Install the MAIN Partner Package.
-installPackage $PARTNER_PACKAGE_VERSION_ID_01 \
-               "MAIN Partner Package" \
-               "Install the Main Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
+# Install the MAIN Demo Package.
+installPackage $DEMO_PACKAGE_VERSION_ID_01 \
+               "MAIN Demo Package" \
+               "Install the Main Demo Package into the $TARGET_ORG_ALIAS org"
 
-# Install the SECOND Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_02 \
-#               "SECOND Partner Package" \
-#               "Install the Second Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
+# Install the SECOND Demo Package. (uncomment if needed)
+#installPackage $DEMO_PACKAGE_VERSION_ID_02 \
+#               "SECOND Demo Package" \
+#               "Install the Second Demo Package into the $TARGET_ORG_ALIAS org"
 
-# Install the THIRD Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_03 \
-#               "THIRD Partner Package" \
-#               "Install the Third Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
+# Install the THIRD Demo Package. (uncomment if needed)
+#installPackage $DEMO_PACKAGE_VERSION_ID_03 \
+#               "THIRD Demo Package" \
+#               "Install the Third Demo Package into the $TARGET_ORG_ALIAS org"
 
-# Install the FOURTH Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_04 \
-#               "FOURTH Partner Package" \
-#               "Install the Fourth Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
+# Install the FOURTH Demo Package. (uncomment if needed)
+#installPackage $DEMO_PACKAGE_VERSION_ID_04 \
+#               "FOURTH Demo Package" \
+#               "Install the Fourth Demo Package into the $TARGET_ORG_ALIAS org"
 
-# Install the FIFTH Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_05 \
-#               "FIFTH Partner Package" \
-#               "Install the Fifth Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
+# Install the FIFTH Demo Package. (uncomment if needed)
+#installPackage $DEMO_PACKAGE_VERSION_ID_05 \
+#               "FIFTH Demo Package" \
+#               "Install the Fifth Demo Package into the $TARGET_ORG_ALIAS org"
 #
 ##
 ###
@@ -131,7 +136,7 @@ assignPermset "FinServ__Advisor" \
 ##
 #
 
-echoStepMsg "Import/create demo-specifc data in the $TARGET_DEMO_ORG_ALIAS org"
+echoStepMsg "Import/create demo-specifc data in the $TARGET_ORG_ALIAS org"
 
 #
 ##

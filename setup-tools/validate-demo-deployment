@@ -63,27 +63,27 @@ resetStepMsgCounter 6
 ##
 #
 # Install the MAIN Partner Package.
-installPackage $PARTNER_PACKAGE_VERSION_ID_01 \
+installPackage $DEMO_PACKAGE_VERSION_ID_01 \
                "MAIN Partner Package" \
                "Install the Main Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
 
 # Install the SECOND Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_02 \
+#installPackage $DEMO_PACKAGE_VERSION_ID_02 \
 #               "SECOND Partner Package" \
 #               "Install the Second Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
 
 # Install the THIRD Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_03 \
+#installPackage $DEMO_PACKAGE_VERSION_ID_03 \
 #               "THIRD Partner Package" \
 #               "Install the Third Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
 
 # Install the FOURTH Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_04 \
+#installPackage $DEMO_PACKAGE_VERSION_ID_04 \
 #               "FOURTH Partner Package" \
 #               "Install the Fourth Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
 
 # Install the FIFTH Partner Package. (uncomment if needed)
-#installPackage $PARTNER_PACKAGE_VERSION_ID_05 \
+#installPackage $DEMO_PACKAGE_VERSION_ID_05 \
 #               "FIFTH Partner Package" \
 #               "Install the Fifth Partner Package into the $TARGET_DEMO_ORG_ALIAS org"
 #

@@ -117,11 +117,11 @@ echoConfigVariables () {
   echo "`tput setaf 7`PROJECT_ROOT ------------------->`tput sgr0` " $PROJECT_ROOT
   echo "`tput setaf 7`SALESFORCE_DEMO_ORG_ALIAS ------>`tput sgr0` " $SALESFORCE_DEMO_ORG_ALIAS
   echo "`tput setaf 7`PARTNER_DEMO_ORG_ALIAS --------->`tput sgr0` " $PARTNER_DEMO_ORG_ALIAS
-  echo "`tput setaf 7`PARTNER_PACKAGE_VERSION_ID_01 -->`tput sgr0` " $PARTNER_PACKAGE_VERSION_ID_01
-  echo "`tput setaf 7`PARTNER_PACKAGE_VERSION_ID_02 -->`tput sgr0` " $PARTNER_PACKAGE_VERSION_ID_02
-  echo "`tput setaf 7`PARTNER_PACKAGE_VERSION_ID_03 -->`tput sgr0` " $PARTNER_PACKAGE_VERSION_ID_03
-  echo "`tput setaf 7`PARTNER_PACKAGE_VERSION_ID_04 -->`tput sgr0` " $PARTNER_PACKAGE_VERSION_ID_04
-  echo "`tput setaf 7`PARTNER_PACKAGE_VERSION_ID_05 -->`tput sgr0` " $PARTNER_PACKAGE_VERSION_ID_05
+  echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_01 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_01
+  echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_02 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_02
+  echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_03 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_03
+  echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_04 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_04
+  echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_05 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_05
   echo "`tput setaf 7`GIT_REMOTE_URI ----------------->`tput sgr0` " $GIT_REMOTE_URI
   echo "`tput setaf 7`ECHO_LOCAL_CONFIG_VARS --------->`tput sgr0` " $ECHO_LOCAL_CONFIG_VARS
   echo ""

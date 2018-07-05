@@ -16,22 +16,10 @@
 #### DECLARE VARIABLES #############################################################################
 #
 #
-# Package Version ID for the Partner's MAIN packaged app. Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_01="04t1N000001IGiT"
+# Alias for the Scratch Org used to VALIDATE the demo install process.  
+DEMO_VALIDATION_ORG_ALIAS="PARTNER_NAME_DemoValidationOrg"
 
-# Package Version ID for the Partner's SECOND packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_02="NOT_PRESENT"
-
-# Package Version ID for the Partner's THIRD packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_03="NOT_PRESENT"
-
-# Package Version ID for the Partner's FOURTH packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_04="NOT_PRESENT"
-
-# Package Version ID for the Partner's FIFTH packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_05="NOT_PRESENT"
-
-# Alias for the Partner-owned demo org that the partner can use to test their install process.
-PARTNER_DEMO_ORG_ALIAS="PartnerDemoOrg"
+# Alias for the Trial, DE, Sandbox, or other non-scratch org where the demo will be installed.
+DEMO_INSTALLATION_ORG_ALIAS="PARTNER_NAME_DemoInstallationOrg"
 
 ##END##

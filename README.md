@@ -68,22 +68,22 @@ The demo installation scripts included in this project are driven by variables d
 PARTNER_PROJECT_ROOT=~/projects/my-fsc-demo-setup-project
 ```
 
-**PARTNER_PACKAGE_VERSION_ID_0X:** Package Version IDs representing ALL of the packages required to demo your app. Package Version ID `01` is always required.  If your app only needs one package for your demo, leave the default value of `NOT_PRESENT` for Package Version IDs `02` through `05`.
+**DEMO_PACKAGE_VERSION_ID_0X:** Package Version IDs representing ALL of the packages required to demo your app. Package Version ID `01` is always required.  If your app only needs one package for your demo, leave the default value of `NOT_PRESENT` for Package Version IDs `02` through `05`.
 ```
 # Package Version ID for the Partner's MAIN packaged app. Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_01="04t000000000000"
+DEMO_PACKAGE_VERSION_ID_01="04t000000000000"
 
 # Package Version ID for the Partner's SECOND packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_02="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_02="NOT_PRESENT"
 
 # Package Version ID for the Partner's THIRD packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_03="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_03="NOT_PRESENT"
 
 # Package Version ID for the Partner's FOURTH packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_04="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_04="NOT_PRESENT"
 
 # Package Version ID for the Partner's FIFTH packaged app (if applicable). Must begin with "04t".
-PARTNER_PACKAGE_VERSION_ID_05="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_05="NOT_PRESENT"
 ```
 
 
