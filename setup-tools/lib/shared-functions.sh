@@ -108,6 +108,43 @@ confirmScriptExecution () {
 #
 ##
 ###
+#### FUNCTION: determineTargetOrgAlias () ##########################################################
+###
+##
+#
+determineTargetOrgAlias () {
+  # Start by clearing TARGET_ORG_ALIAS so we'll know for sure if a new value was provided
+  TARGET_ORG_ALIAS=""
+
+  # If no value was provided for $REQUESTED_INSTALLATION_OPTION, set defaults and return success.
+  if [ -z "$REQUESTED_INSTALLATION_OPTION" ]; then
+    INSTALLATION_OPTION="NOT_SPECIFIED"
+    TARGET_ORG_ALIAS="NOT_SPECIFIED"
+    return 0
+  else 
+    case "$REQUESTED_INSTALLATION_OPTION" in 
+      "DEPLOY_DEMO")
+        TARGET_ORG_ALIAS="$DEMO_INSTALLATION_ORG_ALIAS"
+        ;;
+      "VALIDATE_DEMO")
+        TARGET_ORG_ALIAS="$DEMO_VALIDATION_ORG_ALIAS"
+        ;;
+    esac
+    # Make sure that TARGET_ORG_ALIAS was set.  If not, it means an unexpected INSTALLATION_OPTION
+    # was provided.  In that case, raise an error and abort the script.
+    if [ -z "$TARGET_ORG_ALIAS" ]; then
+      echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`$REQUESTED_INSTALLATION_OPTION is not a valid installation option.\n"
+      exit 1
+    fi
+    # If we get this far, it means that the REQUESTED_INSTALLATION_OPTION was valid.
+    # We can now assign that to the INSTALLATION_OPTION variable and return success.
+    INSTALLATION_OPTION="$REQUESTED_INSTALLATION_OPTION"
+    return 0
+  fi
+}
+#
+##
+###
 #### FUNCTION: echoConfigVariables () ##############################################################
 ###
 ##
@@ -115,8 +152,13 @@ confirmScriptExecution () {
 echoConfigVariables () {
   echo ""
   echo "`tput setaf 7`PROJECT_ROOT ------------------->`tput sgr0` " $PROJECT_ROOT
-  echo "`tput setaf 7`SALESFORCE_DEMO_ORG_ALIAS ------>`tput sgr0` " $SALESFORCE_DEMO_ORG_ALIAS
-  echo "`tput setaf 7`PARTNER_DEMO_ORG_ALIAS --------->`tput sgr0` " $PARTNER_DEMO_ORG_ALIAS
+  echo "`tput setaf 7`INSTALLATION_OPTION ------------>`tput sgr0` " $INSTALLATION_OPTION
+  echo "`tput setaf 7`TARGET_ORG_ALIAS --------------->`tput sgr0` " $TARGET_ORG_ALIAS
+  echo "`tput setaf 7`DEMO_ADMIN_USER ---------------->`tput sgr0` " $DEMO_ADMIN_USER
+  echo "`tput setaf 7`DEMO_PRIMARY_USER -------------->`tput sgr0` " $DEMO_PRIMARY_USER
+  echo "`tput setaf 7`DEMO_SECONDARY_USER ------------>`tput sgr0` " $DEMO_SECONDARY_USER
+  echo "`tput setaf 7`DEMO_VALIDATION_ORG_ALIAS ------>`tput sgr0` " $DEMO_VALIDATION_ORG_ALIAS
+  echo "`tput setaf 7`DEMO_INSTALLATION_ORG_ALIAS ---->`tput sgr0` " $DEMO_INSTALLATION_ORG_ALIAS
   echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_01 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_01
   echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_02 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_02
   echo "`tput setaf 7`DEMO_PACKAGE_VERSION_ID_03 ----->`tput sgr0` " $DEMO_PACKAGE_VERSION_ID_03
@@ -238,6 +280,7 @@ findProjectRoot () {
 #
 initializeHelperVariables () {
   PROJECT_ROOT=""                                         # Path to the root of this SFDX project
+  TARGET_ORG_ALIAS=""                                     # Target of all Salesforce CLI commands during this run
   LOCAL_CONFIG_FILE_NAME=setup-tools/lib/local-config.sh  # Name of the file that contains local config variables
   CURRENT_STEP=1                                          # Used by echoStepMsg() to indicate the current step
   TOTAL_STEPS=0                                           # Used by echoStepMsg() to indicate total num of steps
@@ -353,8 +396,8 @@ fi
 if [ ! -r "$PROJECT_ROOT/$LOCAL_CONFIG_FILE_NAME" ]; then
   echoErrorMsg "Local setup-tools configuration file not found"
   tput sgr 0; tput bold;
-  echo "Please create a local-config.sh file in your setup-tools/lib directory by copying"
-  echo "setup-tools/templates/local-config-template.sh and customizing it with your local settings\n"
+  echo "Your project does not have a local-config.sh file in your setup-tools/lib directory."
+  echo "To fix this, run sfdx falcon:demo:repair inside your project directory and follow the prompts.\n"
   exit 1
 fi
 
@@ -363,6 +406,18 @@ fi
 # This will make all the variables defined in local-config.sh available to all commands that come
 # after it in this shell.
 source "$PROJECT_ROOT/$LOCAL_CONFIG_FILE_NAME"
+
+# DETERMINE THE TARGET ORG ALIAS
+# This function must be run AFTER the local config variables have been sourced because 
+# it relies on the fact that certain Org Alias values will already be set and available.
+determineTargetOrgAlias
+
+# ECHO LOCAL CONFIG VARIABLES
+# Check if ECHO_LOCAL_CONFIG_VARS varible is TRUE and display them if it is.
+if [ "$ECHO_LOCAL_CONFIG_VARS" = "true" ]; then
+  echo "\n`tput setaf 7``tput bold`Local configuration variables set by `dirname $0`/lib/local-config.sh`tput sgr0`\n"
+  echoConfigVariables
+fi
 
 # MARK THAT LOCAL CONFIG VARIABLES HAVE BEEN SET.
 # Indicates that local config variables have been successfully set. 

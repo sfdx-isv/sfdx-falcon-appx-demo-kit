@@ -1,14 +1,14 @@
 #!/bin/sh
 ####################################################################################################
 #
-# FILENAME:     ##FILENAME## (NOTE: This should be executable, so do not add the .sh file extention)
+# FILENAME:     setup-tools/validate-demo
 #
-# PURPOSE:      ##ADD_PURPOSE_HERE##
+# SUMMARY:      Validates a demo project, usually against a scratch org.
 #
 # DESCRIPTION:  ##ADD_DESCRIPTIION_HERE##
 #
 # INSTRUCTIONS: Execute the following command relative to your project's root directory:  
-#               ./dev-tools/##FILENAME##
+#               ./setup-tools/validate-demo
 #
 # RELATED DOCS: TODO: ?????
 #               └─ https://???.???.com
@@ -26,9 +26,10 @@
 ##
 #
 if [ ! -r `dirname $0`/lib/shared-functions.sh ]; then
-  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load dev-tools/lib/shared-functions.sh.  File not found.\n"
+  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load setup-tools/lib/shared-functions.sh.  File not found.\n"
   exit 1
 fi
+REQUESTED_INSTALLATION_OPTION="VALIDATE_DEMO"
 source `dirname $0`/lib/shared-functions.sh
 #
 ##
@@ -37,7 +38,7 @@ source `dirname $0`/lib/shared-functions.sh
 ###
 ##
 #
-confirmScriptExecution "Do you want to install the Partner's App in the Salesforce Demo Org?"
+confirmScriptExecution "Validate this Demo's deployment steps against a Scratch Org?"
 #
 ##
 ###
@@ -45,15 +46,28 @@ confirmScriptExecution "Do you want to install the Partner's App in the Salesfor
 ###
 ##
 #
-TARGET_DEMO_ORG_ALIAS=$SALESFORCE_DEMO_ORG_ALIAS
-PROJECT_ROOT=$SALESFORCE_PROJECT_ROOT
+# No local variables needed by the default version of this script.
+# If you decide to customize this script, create your variables here.
 #
 ##
 ###
-#### RESET STEP MESSAGE COUNTER ####################################################################
+#### EXECUTE DEMO VALIDATION LOGIC #################################################################
 ###
 ##
 #
+# For most demos, the only thing that's different between `validate-demo` and `deploy-demo` is the
+# target org.  Demos are VALIDATED in scratch orgs and DEPLOYED to DE/EE/TRIAL orgs.  
+#
+# The standard behavior here is to leverage the logic present in `deploy-demo` by sourcing it and
+# having it run with "VALIDATE_DEMO" set as the INSTALLATION_OPTION.
+#
+# NOTE: Unless you have good reason to create a distinct demo validation script, this file should
+# be left as-is.  All of your demo setup logic should be put inside `src/deploy-demo`.
+
+source `dirname $0`/deploy-demo-app
+
+
+
 resetStepMsgCounter 6
 #
 ##
@@ -112,15 +126,15 @@ deployMdapiSource "data-config"
 #
 # Assign packaged permission sets to specific users (ADMIN, PRIMARY, and/or SECONDARY).
 assignPermset "FinServ__Advisor" \
-              "$SALESFORCE_DEMO_ORG_ADMIN_USER,
-               $SALESFORCE_DEMO_ORG_PRIMARY_USER,
-               $SALESFORCE_DEMO_ORG_SECONDARY_USER"
+              "$DEMO_ADMIN_USER,
+               $DEMO_PRIMARY_USER,
+               $DEMO_SECONDARY_USER"
 
 # Repeat permission set assignments as many times as necessary using the following template:
 #assignPermset "NameSpace__PermSetApiName" \
-#              "$SALESFORCE_DEMO_ORG_ADMIN_USER,
-#               $SALESFORCE_DEMO_ORG_PRIMARY_USER,
-#               $SALESFORCE_DEMO_ORG_SECONDARY_USER"
+#              "$DEMO_ADMIN_USER,
+#               $DEMO_PRIMARY_USER,
+#               $DEMO_SECONDARY_USER"
 
 
 #

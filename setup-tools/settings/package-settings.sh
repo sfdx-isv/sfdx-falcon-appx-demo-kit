@@ -31,4 +31,7 @@ DEMO_PACKAGE_VERSION_ID_04="NOT_PRESENT"
 # Package Version ID for the Partner's FIFTH packaged app (if applicable). Must begin with "04t".
 DEMO_PACKAGE_VERSION_ID_05="NOT_PRESENT"
 
+# Indicate that the package config variables have been successfully set. DO NOT MODIFY.
+PACKAGE_CONFIG_VARS_SET="true"
+
 ##END##

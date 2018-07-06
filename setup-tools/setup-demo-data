@@ -87,15 +87,15 @@ PROJECT_ROOT=$SALESFORCE_PROJECT_ROOT
 #
 # Assign packaged permission sets to specific users (ADMIN, PRIMARY, and/or SECONDARY).
 assignPermset "FinServ__Advisor" \
-              "$SALESFORCE_DEMO_ORG_ADMIN_USER,
-               $SALESFORCE_DEMO_ORG_PRIMARY_USER,
-               $SALESFORCE_DEMO_ORG_SECONDARY_USER"
+              "$DEMO_ADMIN_USER,
+               $DEMO_PRIMARY_USER,
+               $DEMO_SECONDARY_USER"
 
 # Repeat permission set assignments as many times as necessary using the following template:
 #assignPermset "NameSpace__PermSetApiName" \
-#              "$SALESFORCE_DEMO_ORG_ADMIN_USER,
-#               $SALESFORCE_DEMO_ORG_PRIMARY_USER,
-#               $SALESFORCE_DEMO_ORG_SECONDARY_USER"
+#              "$DEMO_ADMIN_USER,
+#               $DEMO_PRIMARY_USER,
+#               $DEMO_SECONDARY_USER"
 
 #
 ##

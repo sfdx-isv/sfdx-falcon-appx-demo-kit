@@ -16,19 +16,16 @@
 ####################################################################################################
 #
 #
-# Alias for the Salesforce-owned demo org that the Partner's app will be installed in.
-SALESFORCE_DEMO_ORG_ALIAS="SalesforceDemoOrg"
-
 # Username for the Admin User in the Demo Org
-SALESFORCE_DEMO_ORG_ADMIN_USER="vivek@vmc-fsc-trial-01.org"
+DEMO_ADMIN_USER="vivek@vmc-fsc-trial-01.org"
 
 # Username for the Primary Demo User in the Demo Org
-SALESFORCE_DEMO_ORG_PRIMARY_USER="advisoruser.jzjovso3ncvo.joehwb4yv0ey.8fmf7fwuefu5@example.com"
+DEMO_PRIMARY_USER="advisoruser.jzjovso3ncvo.joehwb4yv0ey.8fmf7fwuefu5@example.com"
 
 # Username for the Secondary Demo User in the Demo Org
-SALESFORCE_DEMO_ORG_SECONDARY_USER="integration@00d6a0000037t9huau.com"
+DEMO_SECONDARY_USER="integration@00d6a0000037t9huau.com"
 
-# Indicate that local config variables have been successfully set. DO NOT MODIFY.
-SALESFORCE_CONFIG_VARS_SET="true"
+# Indicate that the user config variables have been successfully set. DO NOT MODIFY.
+USER_CONFIG_VARS_SET="true"
 
 ##END##

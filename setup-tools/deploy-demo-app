@@ -26,9 +26,10 @@
 ##
 #
 if [ ! -r `dirname $0`/lib/shared-functions.sh ]; then
-  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load dev-tools/lib/shared-functions.sh.  File not found.\n"
+  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load setup-tools/lib/shared-functions.sh.  File not found.\n"
   exit 1
 fi
+REQUESTED_INSTALLATION_OPTION="DEPLOY_DEMO"
 source `dirname $0`/lib/shared-functions.sh
 #
 ##
@@ -37,7 +38,8 @@ source `dirname $0`/lib/shared-functions.sh
 ###
 ##
 #
-confirmScriptExecution "Do you want to install the Partner's App in the Salesforce Demo Org?"
+confirmScriptExecution "Deploy this Demo to a Trial, Sandbox, or Developer Edition Org?"
+
 #
 ##
 ###
@@ -45,12 +47,9 @@ confirmScriptExecution "Do you want to install the Partner's App in the Salesfor
 ###
 ##
 #
-
-# Check if $TARGET_ORG_ALIAS has been overriden. 
-# If not, default to the Demo Installation Org.
-if [ -z "$TARGET_ORG_ALIAS" ]; then
-  TARGET_ORG_ALIAS=$DEMO_INSTALLATION_ORG_ALIAS
-fi
+# Add your own local variables here.  Make sure that your variable names do not
+# collide with names that already exist in any of the setup-tools scripts,
+# helper libraries (setup-tools/lib), or settings (setup-tools/settings).
 
 #
 ##
@@ -117,15 +116,15 @@ deployMdapiSource "data-config"
 #
 # Assign packaged permission sets to specific users (ADMIN, PRIMARY, and/or SECONDARY).
 assignPermset "FinServ__Advisor" \
-              "$SALESFORCE_DEMO_ORG_ADMIN_USER,
-               $SALESFORCE_DEMO_ORG_PRIMARY_USER,
-               $SALESFORCE_DEMO_ORG_SECONDARY_USER"
+              "$DEMO_ADMIN_USER,
+               $DEMO_PRIMARY_USER,
+               $DEMO_SECONDARY_USER"
 
 # Repeat permission set assignments as many times as necessary using the following template:
 #assignPermset "NameSpace__PermSetApiName" \
-#              "$SALESFORCE_DEMO_ORG_ADMIN_USER,
-#               $SALESFORCE_DEMO_ORG_PRIMARY_USER,
-#               $SALESFORCE_DEMO_ORG_SECONDARY_USER"
+#              "$DEMO_ADMIN_USER,
+#               $DEMO_PRIMARY_USER,
+#               $DEMO_SECONDARY_USER"
 
 
 #
@@ -150,3 +149,33 @@ echoScriptCompleteMsg \
 exit 0
 
 ##END##
+
+
+
+#
+##
+###
+#### DETERMINE INSTALLATION OPTIONS ################################################################
+###
+##
+#
+# Check if an $INSTALLATION_OPTION has been set. If not, default to the 
+# "DEPLOY_DEMO" option and set the Target Org to the Demo Installation Org.
+if [ -z "$INSTALLATION_OPTION" ]; then
+  INSTALLATION_OPTION="DEPLOY_DEMO"
+  TARGET_ORG_ALIAS=$DEMO_INSTALLATION_ORG_ALIAS
+else 
+  case $INSTALLATION_OPTION in 
+    "VALIDATE_DEMO")
+      TARGET_ORG_ALIAS=$DEMO_VALIDATION_ORG_ALIAS
+      ;;
+  esac
+fi
+
+# Make sure that TARGET_ORG_ALIAS was set.  If it wasn't, it means that an
+# unexpected INSTALLATION_OPTION was provided.  If that happens, we must 
+# raise an error and abort the script.
+if [ -z "$TARGET_ORG_ALIAS" ]; then
+  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`$INSTALLATION_OPTION is not a valid installation option.\n"
+  exit 1
+fi

@@ -18,11 +18,16 @@
 ####################################################################################################
 #
 #
-SHARED_CONFIG_FILE_NAME="settings/shared-settings.sh"          # Name of the file that contains Shared settings
-SALESFORCE_CONFIG_FILE_NAME="settings/salesforce-settings.sh"  # Name of the file that contains Salesforce settings
-PARTNER_CONFIG_FILE_NAME="settings/partner-settings.sh"        # Name of the file that contains Partner settings
+ORG_CONFIG_FILE_NAME="settings/org-settings.sh"           # Name of the file that contains Org settings
+PACKAGE_CONFIG_FILE_NAME="settings/package-settings.sh"   # Name of the file that contains Org settings
+SHARED_CONFIG_FILE_NAME="settings/shared-settings.sh"     # Name of the file that contains Shared settings
+USER_CONFIG_FILE_NAME="settings/user-settings.sh"         # Name of the file that contains User settings
 #
-#### LOAD SHARED VARIABLES #########################################################################
+##
+###
+#### LOAD SHARED CONFIG VARIABLES ##################################################################
+###
+##
 #
 # Load local configuration variables from shared-settings.sh.  If this file is
 # missing, EXIT from the shell script with an error message. 
@@ -30,7 +35,7 @@ PARTNER_CONFIG_FILE_NAME="settings/partner-settings.sh"        # Name of the fil
 if [ ! -r `dirname $0`/$SHARED_CONFIG_FILE_NAME ]; then
   echoErrorMsg "Local setup-tools configuration file not found"
   tput sgr 0; tput bold;
-  echo "Your project does not have a shared-settings.sh file in your setup-tools/lib"
+  echo "Your project does not have a shared-settings.sh file in your setup-tools/settings"
   echo "directory.  Please log an issue in your GitHub repository for support.\n"
   exit 1
 fi
@@ -41,50 +46,84 @@ fi
 #
 source `dirname $0`/$SHARED_CONFIG_FILE_NAME
 #
-#### LOAD SALESFORCE VARIABLES #####################################################################
+##
+###
+#### LOAD USER CONFIG VARIABLES ####################################################################
+###
+##
 #
-# Load local configuration variables from salesforce-settings.sh.  If this file is
+# Load local configuration variables from user-settings.sh.  If this file is
 # missing, EXIT from the shell script with an error message. 
 #
-if [ ! -r `dirname $0`/$SALESFORCE_CONFIG_FILE_NAME ]; then
+if [ ! -r `dirname $0`/$USER_CONFIG_FILE_NAME ]; then
   echoErrorMsg "Local setup-tools configuration file not found"
   tput sgr 0; tput bold;
-  echo "Your project does not have a salesforce-settings.sh file in your setup-tools/lib"
+  echo "Your project does not have a user-settings.sh file in your setup-tools/settings"
   echo "directory.  Please log an issue in your GitHub repository for support.\n"
   exit 1
 fi
 #
-# The salesforce-settings.sh file was found and is readable. Source (execute) it.  This will
+# The user-settings.sh file was found and is readable. Source (execute) it.  This will
 # make all the variables defined in that file available to all commands that come after
 # it in this shell.
 #
-source `dirname $0`/$SALESFORCE_CONFIG_FILE_NAME
+source `dirname $0`/$USER_CONFIG_FILE_NAME
 #
-#### LOAD PARTNER VARIABLES ########################################################################
+##
+###
+#### LOAD ORG CONFIG VARIABLES #####################################################################
+###
+##
 #
-# Load local configuration variables from partner-settings.sh.  If this file is
+# Load local configuration variables from org-settings.sh.  If this file is
 # missing, EXIT from the shell script with an error message. 
 #
-if [ ! -r `dirname $0`/$PARTNER_CONFIG_FILE_NAME ]; then
+if [ ! -r `dirname $0`/$ORG_CONFIG_FILE_NAME ]; then
   echoErrorMsg "Local setup-tools configuration file not found"
   tput sgr 0; tput bold;
-  echo "Your project does not have a partner-settings.sh file in your setup-tools/lib"
+  echo "Your project does not have an org-settings.sh file in your setup-tools/settings"
   echo "directory.  Please log an issue in your GitHub repository for support.\n"
   exit 1
 fi
 #
-# The partner-settings.sh file was found and is readable. Source (execute) it.  This will
+# The org-settings.sh file was found and is readable. Source (execute) it.  This will
 # make all the variables defined in that file available to all commands that come after
 # it in this shell.
 #
-source `dirname $0`/$PARTNER_CONFIG_FILE_NAME
+source `dirname $0`/$ORG_CONFIG_FILE_NAME
 #
+##
+###
+#### LOAD PACKAGE CONFIG VARIABLES #################################################################
+###
+##
+#
+# Load local configuration variables from package-settings.sh.  If this file is
+# missing, EXIT from the shell script with an error message. 
+#
+if [ ! -r `dirname $0`/$PACKAGE_CONFIG_FILE_NAME ]; then
+  echoErrorMsg "Local setup-tools configuration file not found"
+  tput sgr 0; tput bold;
+  echo "Your project does not have a package-settings.sh file in your setup-tools/settings"
+  echo "directory.  Please log an issue in your GitHub repository for support.\n"
+  exit 1
+fi
+#
+# The package-settings.sh file was found and is readable. Source (execute) it.  This will
+# make all the variables defined in that file available to all commands that come after
+# it in this shell.
+#
+source `dirname $0`/$PACKAGE_CONFIG_FILE_NAME
+#
+##
+###
 #### ECHO ALL VARIABLES ############################################################################
+###
+##
 #
-#
-if [ "$ECHO_LOCAL_CONFIG_VARS" = "true" ]; then
-  echo "\n`tput setaf 7``tput bold`Local configuration variables set by `dirname $0`/lib/local-config.sh`tput sgr0`\n"
-  echoConfigVariables
-fi
+#if [ "$ECHO_LOCAL_CONFIG_VARS" = "true" ]; then
+#  echo "\n`tput setaf 7``tput bold`Local configuration variables set by `dirname $0`/lib/local-config.sh`tput sgr0`\n"
+#  echoConfigVariables
+#fi
 
 ##END##
