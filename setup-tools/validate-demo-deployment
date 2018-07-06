@@ -51,6 +51,21 @@ confirmScriptExecution "Validate this Demo's deployment steps against a Scratch 
 #
 ##
 ###
+#### FUNCTION: deleteScratchOrg () #################################################################
+###
+##
+#
+deleteScratchOrg () {
+  # Delete the current scratch org.
+  echoStepMsg "Delete the $TARGET_ORG_ALIAS scratch org"
+  echo "Executing force:org:delete -p -u $TARGET_ORG_ALIAS -v $DEV_HUB_ALIAS" 
+  (cd $PROJECT_ROOT && exec sfdx force:org:delete -p -u $SCRATCH_ORG_ALIAS -v $DEV_HUB_ALIAS )
+}
+
+
+#
+##
+###
 #### EXECUTE DEMO VALIDATION LOGIC #################################################################
 ###
 ##
@@ -63,6 +78,9 @@ confirmScriptExecution "Validate this Demo's deployment steps against a Scratch 
 #
 # NOTE: Unless you have good reason to create a distinct demo validation script, this file should
 # be left as-is.  All of your demo setup logic should be put inside `src/deploy-demo`.
+
+# First, delete the current demo validation scratch org (if it exists).
+
 
 source `dirname $0`/deploy-demo-app
 
