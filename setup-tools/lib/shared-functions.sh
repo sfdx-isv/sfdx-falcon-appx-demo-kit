@@ -97,6 +97,14 @@ confirmChoice () {
 ##
 #
 confirmScriptExecution () {
+  if [ ! -z "$CONFIRM_EXECUTION" ]; then
+    # The user has already been asked to confirm execution. 
+    # If confirmScriptExecution() is getting called again, it means that
+    # one or more scripts are being sourced and run by a parent script.
+    # We don't want to keep throwing confirmation messages to the user,
+    # so we'll just return 0 to silently continue.
+    return 0
+  fi
   echo "`tput rev`$1`tput sgr0`"
   read -p "(type YES to confirm, or hit ENTER to cancel) " CONFIRM_EXECUTION
   if [ "$CONFIRM_EXECUTION" != "YES" ]; then
@@ -154,6 +162,7 @@ echoConfigVariables () {
   echo "`tput setaf 7`PROJECT_ROOT ------------------->`tput sgr0` " $PROJECT_ROOT
   echo "`tput setaf 7`INSTALLATION_OPTION ------------>`tput sgr0` " $INSTALLATION_OPTION
   echo "`tput setaf 7`TARGET_ORG_ALIAS --------------->`tput sgr0` " $TARGET_ORG_ALIAS
+  echo "`tput setaf 7`DEV_HUB_ALIAS ------------------>`tput sgr0` " $DEV_HUB_ALIAS
   echo "`tput setaf 7`DEMO_ADMIN_USER ---------------->`tput sgr0` " $DEMO_ADMIN_USER
   echo "`tput setaf 7`DEMO_PRIMARY_USER -------------->`tput sgr0` " $DEMO_PRIMARY_USER
   echo "`tput setaf 7`DEMO_SECONDARY_USER ------------>`tput sgr0` " $DEMO_SECONDARY_USER
@@ -219,7 +228,13 @@ echoScriptCompleteMsg () {
 #
 echoStepMsg () {
   tput sgr 0; tput setaf 7; tput bold;
-  printf "\nStep $CURRENT_STEP of $TOTAL_STEPS:"
+  if [ $TOTAL_STEPS -gt 0 ]; then
+    ## This is one of a sequence of steps
+    printf "\nStep $CURRENT_STEP of $TOTAL_STEPS:"
+  else
+    # This is likely a preliminary step, coming before a sequence.
+    printf "\nPreliminary Step $CURRENT_STEP:"
+  fi
   tput sgr 0;
   printf " %b\n\n" "$1"
   tput sgr 0;
@@ -279,6 +294,7 @@ findProjectRoot () {
 ##
 #
 initializeHelperVariables () {
+  CONFIRM_EXECUTION=""                                    # Indicates the user's choice whether to execute a script or not
   PROJECT_ROOT=""                                         # Path to the root of this SFDX project
   TARGET_ORG_ALIAS=""                                     # Target of all Salesforce CLI commands during this run
   LOCAL_CONFIG_FILE_NAME=setup-tools/lib/local-config.sh  # Name of the file that contains local config variables
@@ -359,8 +375,9 @@ suggestDefaultValue () {
   echo "\n"$1=$LOCAL_DEFAULT"\n"
 
   # Ask user to confirm or reject the proposed value.
-  read -p "(type YES to accept,  NO to provide a different value) " CONFIRM_EXECUTION
-  if [ "$CONFIRM_EXECUTION" != "YES" ]; then
+  local ACCEPT_DEFAULT=""
+  read -p "(type YES to accept,  NO to provide a different value) " ACCEPT_DEFAULT
+  if [ "$ACCEPT_DEFAULT" != "YES" ]; then
     return 1
   fi
 
