@@ -22,6 +22,9 @@ DEMO_VALIDATION_ORG_ALIAS="PARTNER_NAME_DemoValidationOrg"
 # Alias for the Trial, DE, Sandbox, or other non-scratch org where the demo will be installed.
 DEMO_INSTALLATION_ORG_ALIAS="PARTNER_NAME_DemoInstallationOrg"
 
+# Location of the scratch-def.json file used to create demo validation scratch orgs.
+SCRATCH_ORG_CONFIG="$PROJECT_ROOT/demo-scratch-def.json"
+
 # Indicate that the org config variables have been successfully set. DO NOT MODIFY.
 ORG_CONFIG_VARS_SET="true"
 

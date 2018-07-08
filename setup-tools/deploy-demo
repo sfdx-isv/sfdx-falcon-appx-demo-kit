@@ -29,7 +29,7 @@ if [ ! -r `dirname $0`/lib/shared-functions.sh ]; then
   echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load setup-tools/lib/shared-functions.sh.  File not found.\n"
   exit 1
 fi
-REQUESTED_INSTALLATION_OPTION="DEPLOY_DEMO"
+REQUESTED_OPERATION="DEPLOY_DEMO"
 source `dirname $0`/lib/shared-functions.sh
 #
 ##
@@ -67,9 +67,9 @@ resetStepMsgCounter 6
 ##
 #
 # Install the MAIN Demo Package.
-installPackage $DEMO_PACKAGE_VERSION_ID_01 \
-               "MAIN Demo Package" \
-               "Install the Main Demo Package into the $TARGET_ORG_ALIAS org"
+installPackage  $DEMO_PACKAGE_VERSION_ID_01 \
+                "MAIN Demo Package" \
+                "Install the Main Demo Package into the $TARGET_ORG_ALIAS org"
 
 # Install the SECOND Demo Package. (uncomment if needed)
 #installPackage $DEMO_PACKAGE_VERSION_ID_02 \
@@ -159,13 +159,13 @@ exit 0
 ###
 ##
 #
-# Check if an $INSTALLATION_OPTION has been set. If not, default to the 
+# Check if an $PARENT_OPERATION has been set. If not, default to the 
 # "DEPLOY_DEMO" option and set the Target Org to the Demo Installation Org.
-if [ -z "$INSTALLATION_OPTION" ]; then
-  INSTALLATION_OPTION="DEPLOY_DEMO"
+if [ -z "$PARENT_OPERATION" ]; then
+  PARENT_OPERATION="DEPLOY_DEMO"
   TARGET_ORG_ALIAS=$DEMO_INSTALLATION_ORG_ALIAS
 else 
-  case $INSTALLATION_OPTION in 
+  case $PARENT_OPERATION in 
     "VALIDATE_DEMO")
       TARGET_ORG_ALIAS=$DEMO_VALIDATION_ORG_ALIAS
       ;;
@@ -173,9 +173,9 @@ else
 fi
 
 # Make sure that TARGET_ORG_ALIAS was set.  If it wasn't, it means that an
-# unexpected INSTALLATION_OPTION was provided.  If that happens, we must 
+# unexpected PARENT_OPERATION was provided.  If that happens, we must 
 # raise an error and abort the script.
 if [ -z "$TARGET_ORG_ALIAS" ]; then
-  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`$INSTALLATION_OPTION is not a valid installation option.\n"
+  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`$PARENT_OPERATION is not a valid installation option.\n"
   exit 1
 fi

@@ -25,11 +25,17 @@
 ###
 ##
 #
+# Make sure that the shared-functions.sh script exists.
 if [ ! -r `dirname $0`/lib/shared-functions.sh ]; then
   echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load setup-tools/lib/shared-functions.sh.  File not found.\n"
   exit 1
 fi
-REQUESTED_INSTALLATION_OPTION="VALIDATE_DEMO"
+
+# Indicate what the requested operation is.
+REQUESTED_OPERATION="VALIDATE_DEMO"
+
+# Load the shared-functions.sh library.  This action will also cause the
+# config variables from setup-tools/lib/local-config.sh to be loaded.
 source `dirname $0`/lib/shared-functions.sh
 #
 ##
@@ -46,21 +52,9 @@ confirmScriptExecution "Validate this Demo's deployment steps against a Scratch 
 ###
 ##
 #
-# No local variables needed by the default version of this script.
-# If you decide to customize this script, create your variables here.
-#
-##
-###
-#### FUNCTION: deleteScratchOrg () #################################################################
-###
-##
-#
-deleteScratchOrg () {
-  # Delete the current scratch org.
-  echoStepMsg "Delete the $DEMO_VALIDATION_ORG_ALIAS scratch org"
-  echo "Executing force:org:delete -p -u $DEMO_VALIDATION_ORG_ALIAS -v $DEV_HUB_ALIAS" 
-  (cd $PROJECT_ROOT && exec sfdx force:org:delete -p -u $DEMO_VALIDATION_ORG_ALIAS -v $DEV_HUB_ALIAS )
-}
+# The default version of this script does not require additional local
+# variables.  If your customized script does require them, this is where
+# you would define and initialize them.
 #
 ##
 ###
@@ -68,14 +62,28 @@ deleteScratchOrg () {
 ###
 ##
 #
+# Nomally, the first thing we do is call resetStepMsgCounter() to set 
+# the number of TOTAL STEPS in the script that's about to execute.
+# Because `validte-demo` relies on `deploy-demo` for all of the heavy
+# lifting, we can skip calling resetStepMsgCounter() and jump right 
+# into running commands.  Note: Any commands that would normally 
+# output a "step message" will instead output "preliminary step messages"
+# until the someone calls resetStepMsgCounter().
+
+# PRELIMINARY STEP 1
 # Start by deleting the old scratch org
 deleteScratchOrg
 
+# PRELIMINARY STEP 2
+# Now create a new scratch org
+createScratchOrg
+
+# THE MAIN EVENT
 # For most demos, the only thing that's different between `validate-demo` and `deploy-demo` is the
 # target org.  Demos are VALIDATED in scratch orgs and DEPLOYED to DE/EE/TRIAL orgs.  
 #
 # The standard behavior here is to leverage the logic present in `deploy-demo` by sourcing it and
-# having it run with "VALIDATE_DEMO" set as the INSTALLATION_OPTION.
+# having it run with "VALIDATE_DEMO" set as the PARENT_OPERATION.
 #
 # NOTE: Unless you have good reason to create a distinct demo validation script, this file should
 # be left as-is.  All of your demo setup logic should be put inside `src/deploy-demo`.
