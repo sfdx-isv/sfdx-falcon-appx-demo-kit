@@ -402,12 +402,22 @@ installPackage () {
   echoStepMsg "$3"
 
   # Print the time (HH:MM:SS) when the installation started.
-  echo "Executing force:package:install --package $1 --publishwait 5 --wait 10 -u $PACKAGE_INSTALL_TARGET_ALIAS"
+  echo "Executing force:package:install \\
+                    --package $1 \\
+                    --publishwait 5 \\
+                    --wait 10 \\
+                    --noprompt \\ 
+                    --targetusername $PACKAGE_INSTALL_TARGET_ALIAS"
   echo "\n`tput bold`Package installation started at `date +%T``tput sgr0`\n"
   local startTime=`date +%s`
 
   # Perform the package installation.  If the installation fails abort the script.
-  (cd $PROJECT_ROOT && exec sfdx force:package:install --package $1 --publishwait 5 --wait 10 -u $PACKAGE_INSTALL_TARGET_ALIAS)
+  (cd $PROJECT_ROOT && exec sfdx force:package:install \
+                                  --package $1 \
+                                  --publishwait 5 \
+                                  --wait 10 \
+                                  --noprompt \
+                                  --targetusername $PACKAGE_INSTALL_TARGET_ALIAS)
   if [ $? -ne 0 ]; then
     echoErrorMsg "$2 could not be installed. Aborting Script."
     exit 1
