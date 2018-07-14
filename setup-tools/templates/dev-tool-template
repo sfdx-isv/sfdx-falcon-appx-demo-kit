@@ -1,14 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 ####################################################################################################
 #
 # FILENAME:     ##FILENAME## (NOTE: This should be executable, so do not add the .sh file extention)
 #
-# PURPOSE:      ##ADD_PURPOSE_HERE##
+# SUMMARY:      ##ADD_SUMMARY_HERE##
 #
 # DESCRIPTION:  ##ADD_DESCRIPTIION_HERE##
 #
 # INSTRUCTIONS: Execute the following command relative to your project's root directory:  
-#               ./dev-tools/##FILENAME##
+#               ./setup-tools/##FILENAME##
 #
 # RELATED DOCS: TODO: ?????
 #               └─ https://???.???.com
@@ -25,10 +25,17 @@
 ###
 ##
 #
+# Make sure that the shared-functions.sh script exists.
 if [ ! -r `dirname $0`/lib/shared-functions.sh ]; then
-  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load dev-tools/lib/shared-functions.sh.  File not found.\n"
+  echo "\nFATAL ERROR: `tput sgr0``tput setaf 1`Could not load setup-tools/lib/shared-functions.sh.  File not found.\n"
   exit 1
 fi
+
+# Indicate what the requested operation is.
+REQUESTED_OPERATION="##REQUESTED_OPERATION##"
+
+# Load the shared-functions.sh library.  This action will also cause the
+# config variables from setup-tools/lib/local-config.sh to be loaded.
 source `dirname $0`/lib/shared-functions.sh
 #
 ##
@@ -45,7 +52,7 @@ confirmScriptExecution "##ADD_CONFIRMATION_QUESTION##?"
 ###
 ##
 #
-# No local variables are used by this script.
+# Add any local variables used by this script here.
 #
 ##
 ###
@@ -53,9 +60,7 @@ confirmScriptExecution "##ADD_CONFIRMATION_QUESTION##?"
 ###
 ##
 #
-
 # Add your code here.
-
 #
 ##
 ###
