@@ -180,6 +180,56 @@ deleteScratchOrg () {
 #
 ##
 ###
+#### FUNCTION: deployMdapiSource () ################################################################
+###
+##
+#
+deployMdapiSource () {
+  # Declare a local variable to store the mdapi-source subdirectory name.
+  local MDAPI_SOURCE_SUBDIRECTORY="$1"
+
+  # Declare a local variable to store the Alias of the org to DEPLOY TO
+  local ORG_ALIAS_TO_DEPLOY_TO=""
+
+  # Make sure we have a target org alias to deploy to.
+  if [ ! -z $TARGET_ORG_ALIAS ]; then
+    ORG_ALIAS_TO_DEPLOY_TO="$TARGET_ORG_ALIAS"
+  else
+    # Something went wrong. The TARGET_ORG_ALIAS variable has not yet been set
+    # or is an empty string.  Raise error message then exit 1 to kill the script.
+    echoErrorMsg "Could not execute deployMdapiSource(). Unknown target org alias."
+    exit 1
+  fi
+
+  # Ensure that a package.xml file exists in the mdapi-source subdirectory specified by the caller.
+  if [ ! -r "$PROJECT_ROOT/mdapi-source/$MDAPI_SOURCE_SUBDIRECTORY/package.xml" ]; then
+    echoErrorMsg "The directory \"$PROJECT_ROOT/mdapi-source/$MDAPI_SOURCE_SUBDIRECTORY\" does not contain a package.xml file. Aborting script."
+    exit 1
+  fi
+
+  # Attempt to deploy the MDAPI source to the packaging org.
+  echoStepMsg "Deploying $MDAPI_SOURCE_SUBDIRECTORY metadata to the demo org"
+  echo \
+  "Executing force:mdapi:deploy \\
+              --deploydir ./mdapi-source/$MDAPI_SOURCE_SUBDIRECTORY \\
+              --testlevel NoTestRun \\
+              --targetusername $ORG_ALIAS_TO_DEPLOY_TO \\
+              --wait 15\n"
+  (cd $PROJECT_ROOT && exec sfdx force:mdapi:deploy \
+                                  --deploydir ./mdapi-source/$MDAPI_SOURCE_SUBDIRECTORY \
+                                  --testlevel NoTestRun \
+                                  --targetusername $ORG_ALIAS_TO_DEPLOY_TO \
+                                  --wait 15)
+
+  # Check if the previous command executed successfully. If not, abort this script.
+  if [ $? -ne 0 ]; then
+    echoErrorMsg "MDAPI deployment failed. Terminating script."
+    exit 1
+  fi
+}
+#
+##
+###
 #### FUNCTION: determineTargetOrgAlias () ##########################################################
 ###
 ##
@@ -349,6 +399,36 @@ findProjectRoot () {
   # Pass the value of the "detected path" back out to the caller by setting the
   # value of the first argument provided when the function was called.
   eval "$1=\"$PATH_TO_PROJECT_ROOT\""
+}
+#
+##
+###
+#### FUNCTION: generatePseudoUuid () ###############################################################
+###
+##
+#
+generatePseudoUuid()
+{
+  local N B C='89ab'
+  for (( N=0; N < 16; ++N ))
+  do
+    B=$(( $RANDOM%256 ))
+    case $N in
+      6)
+        printf '4%x' $(( B%16 ))
+        ;;
+      8)
+        printf '%c%x' ${C:$RANDOM%${#C}:1} $(( B%16 ))
+        ;;
+      3 | 5 | 7 | 9)
+        printf '%02x-' $B
+        ;;
+      *)
+        printf '%02x' $B
+        ;;
+    esac
+  done
+  echo
 }
 #
 ##
