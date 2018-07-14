@@ -1,0 +1,119 @@
+#!/bin/sh
+####################################################################################################
+#
+# FILENAME:     create-user
+#
+# SUMMARY:      ##ADD_SUMMARY_HERE##
+#
+# DESCRIPTION:  ##ADD_DESCRIPTIION_HERE##
+#
+# INSTRUCTIONS: Execute the following command relative to your project's root directory:  
+#               ./setup-tools/##FILENAME##
+#
+# RELATED DOCS: TODO: ?????
+#               └─ https://???.???.com
+#
+#               TODO: ?????
+#               ├─ https://www.????.com
+#               └─ https://www.????.com
+#
+####################################################################################################
+#
+##
+###
+#### PARSE INCOMING ARGUMENTS AND ASSIGN TO LOCAL VARIABLES ########################################
+###
+##
+#
+createUser () {
+  while [[ ${1} ]]; do
+
+    if [ -z "$2" || "${2:0:2}" == "--" ]; then
+      echo "PROBLEM"
+      echo "Missing parameter argument for: ${1}"
+      exit 1
+    fi
+
+    case "${1}" in
+      --targetorgalias)
+          local _target_org_alias=${2}
+          shift
+          ;;
+      --username)
+          local _username=${2}
+          shift
+          ;;
+      --firstname)
+          local _first_name=${2}
+          shift
+          ;;
+      --lastname)
+          local _last_name=${2}
+          shift
+          ;;
+      *)
+          echo "Unknown parameter: ${1}" >&2
+          return 1
+    esac
+
+    # Make sure the parameter also has an argument.
+    if ! shift; then
+      echo 'Missing parameter argument.' >&2
+      return 1
+    fi
+  done  
+  
+  # Declare a local variable to store the Alias of the org to DEPLOY TO
+
+  echo "Inside create-user"
+  echo $_username
+  echo $_first_name
+  echo $_last_name
+
+
+  # Make sure we have a target org alias to deploy to.
+  if [ ! -z $_target_org_alias ]; then
+    local _org_alias_to_deploy_to="$_target_org_alias"
+  else
+    # Something went wrong. The Target Org Alias variable has not yet been set
+    # or is an empty string.  Raise error message then exit 1 to kill the script.
+    echo "Could not execute createUser(). Unknown target org alias."
+    exit 1
+  fi
+}
+#
+##
+###
+#### CONFIRM SCRIPT EXECUTION ######################################################################
+###
+##
+#
+
+
+#
+##
+###
+#### CREATE LOCAL VARIABLES ########################################################################
+###
+##
+#
+# No local variables are used by this script.
+#
+##
+###
+#### CUSTOM CODE BEGINS HERE #######################################################################
+###
+##
+#
+
+createUser "$@"
+
+#
+##
+###
+#### ECHO CLOSING MESSAGE ##########################################################################
+###
+##
+#
+
+##END##
