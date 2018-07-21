@@ -6,6 +6,9 @@
 .sfdx
 .salesforce
 
+# Ignore SFDX-Falcon local config files
+.sfdx-falcon
+
 # Ignore Eclipse config files
 .classpath
 .project
