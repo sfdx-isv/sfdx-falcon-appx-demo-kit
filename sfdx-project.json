@@ -2,8 +2,8 @@
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "43.0",
   "plugins": {
-    "sfdx-falcon": {
-      "appx-project": {
+    "sfdxFalcon": {
+      "appxProject": {
         "projectSchema"       : "0.0.1",
         "projectName"         : "my-sfdx-falcon-project",
         "projectType"         : "managed-package",
@@ -15,13 +15,13 @@
           "beta"  : "04t000000000000"
         },
         "gitRemoteUri"        : "https://github.com/my-org/my-repo.git",
-        "Key3": ["value3a", "value3b", "value3c"],
-        "Key4": {
-          "Key4a": "value4a",
-          "Key4b": "value4b"
+        "key3": ["value3a", "value3b", "value3c"],
+        "key4": {
+          "key4a": "value4a",
+          "key4b": "value4b"
         }
       },
-      "appx-demo": {
+      "appxDemo": {
         "demoSchema"          : "0.0.1",
         "demoName"            : "my-appx-demo",
         "demoType"            : "adk-standard"
