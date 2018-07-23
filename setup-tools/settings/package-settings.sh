@@ -17,7 +17,7 @@
 #
 #
 # Package Version ID for the Partner's MAIN packaged app. Must begin with "04t".
-DEMO_PACKAGE_VERSION_ID_01="NOT_PRESENT"
+DEMO_PACKAGE_VERSION_ID_01="04t1N000001bW4g"
 
 # Package Version ID for the Partner's SECOND packaged app (if applicable). Must begin with "04t".
 DEMO_PACKAGE_VERSION_ID_02="NOT_PRESENT"

@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 ####################################################################################################
 #
-# FILENAME:     ##FILENAME## (NOTE: This should be executable, so do not add the .sh file extention)
+# FILENAME:     deploy-demo
 #
 # PURPOSE:      ##ADD_PURPOSE_HERE##
 #
@@ -67,9 +67,9 @@ resetStepMsgCounter 6
 ##
 #
 # Install the MAIN Demo Package.
-installPackage  $DEMO_PACKAGE_VERSION_ID_01 \
-                "MAIN Demo Package" \
-                "Install the Main Demo Package into the $TARGET_ORG_ALIAS org"
+#installPackage  $DEMO_PACKAGE_VERSION_ID_01 \
+#                "MAIN Demo Package" \
+#                "Install the Main Demo Package into the $TARGET_ORG_ALIAS org"
 
 # Install the SECOND Demo Package. (uncomment if needed)
 #installPackage $DEMO_PACKAGE_VERSION_ID_02 \
@@ -99,13 +99,65 @@ installPackage  $DEMO_PACKAGE_VERSION_ID_01 \
 #
 
 # Deploy Org Config Metadata
-deployMdapiSource "org-config"
+#deployMdapiSource "org-config"
 
 # Deploy App Config Metadata
-deployMdapiSource "app-config"
+#deployMdapiSource "app-config"
 
 # Deploy Data Config Metadata
-deployMdapiSource "data-config"
+#deployMdapiSource "data-config"
+#
+##
+###
+#### CREATE USERS ##################################################################################
+###
+##
+#
+
+createUser () {
+  # Make sure we have a target org alias to deploy to.
+  if [ ! -z $TARGET_ORG_ALIAS ]; then
+    local _target_org_alias="$TARGET_ORG_ALIAS"
+  else
+    # Something went wrong. The TARGET_ORG_ALIAS variable has not yet been set
+    # or is an empty string.  Raise error message then exit 1 to kill the script.
+    echoErrorMsg "Could not execute createUser(). Unknown target org alias."
+    exit 1
+  fi
+
+
+
+  # Create the PRIMARY Demo User
+  (cd $PROJECT_ROOT && exec ./setup-tools/create-user \
+                                  --targetorgalias  "$_target_org_alias" \
+                                  --username        "$1.$2" \
+                                  --profilename     "$3" \
+                                  --firstname       "$4" \
+                                  --lastname        "$5" \
+                                  --email           "$6" \
+                                  --password        "$7" \
+                                  )
+  if [ $? -ne 0 ]; then
+    echoErrorMsg "Could not create a user in $TARGET_ORG_ALIAS. Aborting Script."
+    exit 1
+  fi
+
+
+}
+
+# Generate a random UUID 
+_temp_username_salt=$(generatePseudoUuid)
+
+createUser  "$DEMO_ADMIN_USERNAME_BASE" \
+            "$_temp_username_salt" \
+            "Chatter Free User" \
+            "Vivek First" \
+            "Chawla Last" \
+            "vivek.m.chawla@gmail.com" \
+            "HappyTiger1"
+
+
+
 
 #
 ##
@@ -144,9 +196,11 @@ echoStepMsg "Import/create demo-specifc data in the $TARGET_ORG_ALIAS org"
 ###
 ##
 #
-echoScriptCompleteMsg \
-"Demo App has been successfully installed and configured."
-exit 0
+if [ "$PARENT_OPERATION" == "DEPLOY_DEMO" ]; then
+  echoScriptCompleteMsg \
+  "Demo App has been successfully installed and configured."
+  exit 0
+fi
 
 ##END##
 
