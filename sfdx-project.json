@@ -4,7 +4,7 @@
   "plugins": {
     "sfdxFalcon": {
       "appxProject": {
-        "projectSchema"       : "0.0.1",
+        "schemaVersion"       : "0.0.1",
         "projectName"         : "my-sfdx-falcon-project",
         "projectType"         : "managed-package",
         "namespacePrefix"     : "my_ns_prefix",
@@ -22,9 +22,16 @@
         }
       },
       "appxDemo": {
-        "demoSchema"          : "0.0.1",
-        "demoName"            : "my-appx-demo",
-        "demoType"            : "adk-standard"
+        "demoAlias"           : "MyAppxDemo",
+        "demoBuildConfig"     : "demo-config.json",
+        "demoTitle"           : "My AppExchange Demo",
+        "demoType"            : "ADK-SINGLE",
+        "demoVersion"         : "0.0.1",
+        "gitHubUrl"           : "https://github.com/my-org/my-repo",
+        "gitRemoteUri"        : "https://github.com/my-org/my-repo.git",
+        "partnerAlias"        : "AppyInc",
+        "partnerName"         : "Appy Apps Incorporated",
+        "schemaVersion"       : "0.0.1"
       }
     }			
   }
