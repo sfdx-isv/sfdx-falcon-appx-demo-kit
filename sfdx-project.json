@@ -3,7 +3,7 @@
   "sourceApiVersion": "43.0",
   "plugins": {
     "sfdxFalcon": {
-      "appxProject": {
+      "appxPackage": {
         "schemaVersion"       : "0.0.1",
         "projectName"         : "my-sfdx-falcon-project",
         "projectType"         : "managed-package",
