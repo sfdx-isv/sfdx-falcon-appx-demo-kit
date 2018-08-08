@@ -1,8 +1,8 @@
 {
-  "configName":     "FSC-DriveWealth Demo",
+  "recipeName":     "FSC-DriveWealth Demo",
   "description":    "Builds an FSC-DriveWealth Demo Org",
-  "configType":     "appx-demo-config",
-  "configVersion":  "1.0.0",
+  "recipeType":     "appx:demo-config",
+  "recipeVersion":  "1.0.0",
   "schemaVersion":  "1.0.0",
   "options":  {
     "haltOnError":    true,
@@ -12,9 +12,9 @@
       {
         "orgName":        "Scratch Org Demo",
         "alias":          "fscdrivewealth-scratch-org-demo",
-        "description":   "Installs demo in a scratch org with Chatter and Person Accounts enabled.",
+        "description":    "Installs demo in a scratch org with Chatter and Person Accounts enabled.",
         "isScratchOrg":   true,
-        "scratchDefJson":       "demo-scratch-def.json"
+        "scratchDefJson": "demo-scratch-def.json"
       },
       {
         "orgName":        "Trial Org Demo",
@@ -25,12 +25,12 @@
       }
     ]
   },
-  "configGroups": [
+  "recipeStepGroups": [
     {
-      "groupName":    "Install Packages",
-      "alias":        "install-packages",
-      "description":  "Installs all the managed and unmanged packages we need",
-      "configSteps": [
+      "stepGroupName":  "Install Packages",
+      "alias":          "install-packages",
+      "description":    "Installs all the managed and unmanged packages we need",
+      "recipeSteps": [
         { 
           "stepName":     "Install Falcon-X Managed Package",
           "description":  "Installs version 1.2 (Beta 10) of the Falcon-X package",
@@ -52,9 +52,9 @@
       ]
     },
     {
-      "groupName":    "Deploy Metadata",
-      "description":  "Deploys code from your mdapi-source directory",
-      "configSteps": [
+      "stepGroupName":    "Deploy Metadata",
+      "description":      "Deploys code from your mdapi-source directory",
+      "recipeSteps": [
         {
           "stepName":     "Deploy App Config",
           "description":  "Deploys metadata found in mdapi-source/app-config",
@@ -82,9 +82,9 @@
       ]
     },
     {
-      "groupName":    "Create Users",
-      "description":  "Create primary and secondary demo users",
-      "configSteps": [
+      "stepGroupName":    "Create Users",
+      "description":      "Create primary and secondary demo users",
+      "recipeSteps": [
         {
           "stepName":     "Configure Admin User",
           "description":  "Configures the Admin User based on admin-demo-user.json",
@@ -114,9 +114,9 @@
       ]
     },
     {
-      "groupName":    "Import/Create Data",
-      "description":  "Imports or creates data in the demo org",
-      "configSteps": [
+      "stepGroupName":    "Import/Create Data",
+      "description":      "Imports or creates data in the demo org",
+      "recipeSteps": [
         {
           "stepName":     "Import Custom Settings",
           "description":  "Imports custom settings data",
