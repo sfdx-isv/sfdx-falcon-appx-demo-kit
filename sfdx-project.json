@@ -1,37 +1,25 @@
 {
+  "packageDirectories" : [
+    {"path": "sfdx-source/<%-userAnswers.projectAlias%>", "default": true}
+  ],
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "43.0",
+  "sourceApiVersion": "<%-userAnswers.sfdcApiVersion%>",
   "plugins": {
     "sfdxFalcon": {
-      "appxPackage": {
-        "schemaVersion"       : "0.0.1",
-        "projectName"         : "my-sfdx-falcon-project",
-        "projectType"         : "managed-package",
-        "namespacePrefix"     : "my_ns_prefix",
-        "packageName"         : "My Package Name",
-        "metadataPackageId"   : "033000000000000",
-        "packageVersionId"    : {
-          "stable": "04t000000000000",
-          "beta"  : "04t000000000000"
-        },
-        "gitRemoteUri"        : "https://github.com/my-org/my-repo.git",
-        "key3": ["value3a", "value3b", "value3c"],
-        "key4": {
-          "key4a": "value4a",
-          "key4b": "value4b"
-        }
-      },
+      "producerAlias"   : "<%-userAnswers.producerAlias%>",
+      "producerName"    : "<%-userAnswers.producerName%>",
+      "projectAlias"    : "<%-userAnswers.projectAlias%>",
+      "projectName"     : "<%-userAnswers.projectName%>",
+      "projectType"     : "<%-userAnswers.projectType%>",
+      "defaultRecipe"   : "<%-userAnswers.defaultRecipe%>",
+      "gitRemoteUri"    : "<%-userAnswers.gitRemoteUri%>",
+      "gitHubUrl"       : "<%-userAnswers.gitHubUrl%>",
+      "projectVersion"  : "<%-userAnswers.projectVersion%>",
+      "schemaVersion"   : "<%-userAnswers.schemaVersion%>",
+      "pluginVersion"   : "<%-userAnswers.pluginVersion%>",
+      "appxPackage"     : {},
       "appxDemo": {
-        "demoAlias"           : "MyAppxDemo",
-        "demoBuildConfig"     : "demo-config.json",
-        "demoTitle"           : "My AppExchange Demo",
-        "demoType"            : "ADK-SINGLE",
-        "demoVersion"         : "0.0.1",
-        "gitHubUrl"           : "https://github.com/my-org/my-repo",
-        "gitRemoteUri"        : "https://github.com/my-org/my-repo.git",
-        "partnerAlias"        : "AppyInc",
-        "partnerName"         : "Appy Apps Incorporated",
-        "schemaVersion"       : "0.0.1"
+        "demoRecipes"   : ["<%-userAnswers.defaultRecipe%>"]
       }
     }			
   }
