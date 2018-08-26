@@ -1,8 +1,8 @@
 {
-  "orgName": "PARTNERNAME Demo Org",
+  "orgName": "<%-userAnswers.producerName%> Demo Org",
   "country": "US",
   "edition": "Enterprise",
-  "description": "ADK demo org for PARTNERNAME",
+  "description": "ADK Sample Demo Org",
   "hasSampleData": false,
   "language": "en_US",
   "features": [
