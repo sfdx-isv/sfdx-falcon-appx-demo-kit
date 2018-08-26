@@ -1,10 +1,10 @@
 {
-  "Username": "tester1@sfdx.org",
+  "Username": "admin@demo-user.org",
   "FirstName": "Kermit",
   "LastName": "Frog",
   "Alias": "KFrog",
-  "Email": "vivek.m.chawla@gmail.com",
-  "TimeZoneSidKey": "America/Denver",
+  "Email": "kermit@test.com",
+  "TimeZoneSidKey": "America/Los_Angeles",
   "LocaleSidKey": "en_US",
   "EmailEncodingKey": "UTF-8",
   "LanguageLocaleKey": "en_US",
