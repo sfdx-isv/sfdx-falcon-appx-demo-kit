@@ -1,6 +1,6 @@
 {
   "packageDirectories" : [
-    {"path": "sfdx-source/<%-userAnswers.projectAlias%>", "default": true}
+    {"path": "sfdx-source/force-app", "default": true}
   ],
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "<%-userAnswers.sfdcApiVersion%>",
