@@ -1,14 +1,14 @@
 {
-  "Username": "tester1@sfdx.org",
+  "Username": "primary@demo-user.org",
   "FirstName": "Calvin",
   "LastName": "Hobbs",
+  "Alias": "CHobbs",
   "Email": "vivek.m.chawla@gmail.com",
-  "Alias": "tester1",
   "TimeZoneSidKey": "America/Denver",
   "LocaleSidKey": "en_US",
   "EmailEncodingKey": "UTF-8",
   "LanguageLocaleKey": "en_US",
-  "profileName": "Standard Platform User",
-  "permsets": ["Dreamhouse", "Cloudhouse"],
-  "generatePassword": true
+  "profileName": "Standard User",
+  "permsets": ["FSC_DW"],
+  "password": "abc123pass"
 }

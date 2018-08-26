@@ -1,13 +1,13 @@
 {
   "Username": "tester1@sfdx.org",
-  "LastName": "Hobbs",
+  "FirstName": "Kermit",
+  "LastName": "Frog",
+  "Alias": "KFrog",
   "Email": "vivek.m.chawla@gmail.com",
-  "Alias": "tester1",
   "TimeZoneSidKey": "America/Denver",
   "LocaleSidKey": "en_US",
   "EmailEncodingKey": "UTF-8",
   "LanguageLocaleKey": "en_US",
-  "profileName": "Standard Platform User",
-  "permsets": ["Dreamhouse", "Cloudhouse"],
-  "generatePassword": true
+  "profileName": "System Administrator",
+  "permsets": ["FSC_DW", "VMC_Sample_App_User"]
 }

@@ -1,9 +1,9 @@
 {
-  "recipeName":     "FSC-DriveWealth Demo",
-  "description":    "Builds an FSC-DriveWealth Demo Org",
-  "recipeType":     "appx:demo-config",
+  "recipeName":     "ADK Sample Demo Recipe",
+  "description":    "Sample Recipe for Building an ADK Demo",
+  "recipeType":     "appx:demo-recipe",
   "recipeVersion":  "1.0.0",
-  "schemaVersion":  "1.0.0",
+  "schemaVersion":  "0.1.2",
   "options":  {
     "haltOnError":    true,
     "skipGroups":     [],
@@ -11,15 +11,15 @@
     "targetOrgs": [
       {
         "orgName":        "Scratch Org Demo",
-        "alias":          "fscdrivewealth-scratch-org-demo",
-        "description":    "Installs demo in a scratch org with Chatter and Person Accounts enabled.",
+        "alias":          "<%-userAnswers.producerAlias%>_scratch-demo",
+        "description":    "Installs demo in a Scratch Org",
         "isScratchOrg":   true,
         "scratchDefJson": "demo-scratch-def.json"
       },
       {
         "orgName":        "Trial Org Demo",
-        "alias":          "fscdrivewealth-trial-org-demo",
-        "description":    "Installs demo in an EE org.  Requires an org with Chatter and Person Accounts enabled.",
+        "alias":          "<%-userAnswers.producerAlias%>_ee-trial-demo",
+        "description":    "Installs demo in an EE Trial Org",
         "isScratchOrg":   false,
         "orgReqsJson":    "trial-org-reqs.json"
       }
@@ -29,7 +29,7 @@
     {
       "stepGroupName":  "Install Packages",
       "alias":          "install-packages",
-      "description":    "Installs all the managed and unmanged packages we need",
+      "description":    "Installs all managed and unmanged packages required by the demo",
       "recipeSteps": [
         { 
           "stepName":     "Install Falcon-X Managed Package",
@@ -53,7 +53,8 @@
     },
     {
       "stepGroupName":    "Deploy Metadata",
-      "description":      "Deploys code from your mdapi-source directory",
+      "alias":            "deploy-metadata",
+      "description":      "Deploys code from the mdapi-source directory",
       "recipeSteps": [
         {
           "stepName":     "Deploy App Config",
@@ -82,24 +83,25 @@
       ]
     },
     {
-      "stepGroupName":    "Create Users",
-      "description":      "Create primary and secondary demo users",
+      "stepGroupName":    "Create and Configure Users",
+      "alias":            "create-users",
+      "description":      "Configure the Admin User and create primary and secondary demo users",
       "recipeSteps": [
         {
           "stepName":     "Configure Admin User",
-          "description":  "Configures the Admin User based on admin-demo-user.json",
+          "description":  "Configures the Admin User based on demo-user-admin.json",
           "action":       "configure-admin-user",
           "options": {
-            "definitionFile": "admin-demo-user.json"
+            "definitionFile": "demo-user-admin.json"
           }
         },
         {
           "stepName":     "Create Primary Demo User",
-          "description":  "Creates a demo user based on primary-demo-user.json",
+          "description":  "Creates a demo user based on demo-user-primary.json",
           "action":       "create-user",
           "options": {
-            "definitionFile": "primary-demo-user.json",
-            "sfdxUserAlias":  "partnername-primary-demo-user"
+            "definitionFile": "demo-user-primary.json",
+            "sfdxUserAlias":  "<%-userAnswers.producerAlias%>_primary-demo-user"
           }
         },
         {
@@ -108,13 +110,14 @@
           "action":       "create-user",
           "options": {
             "definitionFile": "secondary-demo-user.json",
-            "sfdxUserAlias":  "partnername-secondary-demo-user"
+            "sfdxUserAlias":  "<%-userAnswers.producerAlias%>_secondary-demo-user"
           }
         }
       ]
     },
     {
       "stepGroupName":    "Import/Create Data",
+      "alias":            "import-data",
       "description":      "Imports or creates data in the demo org",
       "recipeSteps": [
         {

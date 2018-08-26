@@ -1,0 +1,13 @@
+{
+  "Username": "secondary@demo-user.org",
+  "FirstName": "Fozzy",
+  "LastName": "Bear",
+  "Alias": "FBear",
+  "Email": "vivek.m.chawla@gmail.com",
+  "TimeZoneSidKey": "America/Denver",
+  "LocaleSidKey": "en_US",
+  "EmailEncodingKey": "UTF-8",
+  "LanguageLocaleKey": "en_US",
+  "profileName": "Chatter Free User",
+  "password": "abc123pass"
+}

@@ -1,7 +1,0 @@
-{
-    "orgName": "Your Company Name",
-    "edition": "Enterprise",
-    "orgPreferences" : {
-        "enabled": ["S1DesktopEnabled"]
-    }
-}

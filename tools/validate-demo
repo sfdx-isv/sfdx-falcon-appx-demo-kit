@@ -72,11 +72,14 @@ confirmScriptExecution "Validate this Demo's deployment steps against a Scratch 
 
 # PRELIMINARY STEP 1
 # Start by deleting the old scratch org
-#deleteScratchOrg
+deleteScratchOrg
 
 # PRELIMINARY STEP 2
 # Now create a new scratch org
-#createScratchOrg
+createScratchOrg
+
+# DEVTEST
+exit 0
 
 # THE MAIN EVENT
 # For most demos, the only thing that's different between `validate-demo` and `deploy-demo` is the

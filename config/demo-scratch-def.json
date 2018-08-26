@@ -1,0 +1,19 @@
+{
+  "orgName": "PARTNERNAME Demo Org",
+  "country": "US",
+  "edition": "Enterprise",
+  "description": "ADK demo org for PARTNERNAME",
+  "hasSampleData": false,
+  "language": "en_US",
+  "features": [
+    "Communities",
+    "ContactsToMultipleAccounts"
+  ],
+  "orgPreferences": {
+    "enabled": [
+      "S1DesktopEnabled",
+      "ChatterEnabled",
+      "NetworksEnabled"      
+    ]
+  }
+}
