@@ -1,26 +1,30 @@
 {
-  "name": "sfdx-falcon-demo-template",
-  "description": "Specialized project scaffolding for creating standalone and integrated demo orgs using Salesforce DX.",
+  "name": "sfdx-falcon-appx-demo-template",
+  "description": "Specialized project scaffolding for creating an AppX Demo Project using Salesforce DX and the SFDX-Falcon CLI Plugin",
   "version": "0.0.1",
   "author": "Vivek M. Chawla @VivekMChawla",
   "license": "MIT",
-  "bugs": "https://github.com/sfdx-isv/sfdx-falcon-demo-template/issues",
-  "homepage": "https://github.com/sfdx-isv/sfdx-falcon-demo-template",
-  "repository": "sfdx-isv/sfdx-falcon-demo-template",
+  "bugs": "https://github.com/sfdx-isv/sfdx-falcon-appx-demo-template/issues",
+  "homepage": "https://github.com/sfdx-isv/sfdx-falcon-appx-demo-template",
+  "repository": "sfdx-isv/sfdx-falcon-appx-demo-template",
   "main": "sfdx-project.json",
   "keywords": [
-    "salesforce", "sfdx-plugin", "sfdx-falcon", "sfdx"
+    "salesforce", "sfdx", "sfdx-falcon", "sfdx-plugin", "appexchange", "appexchange-demo-kit", "adk"
   ],
   "files": [
-    "/demo-data",
-    "/manual-steps",
+    "/.templates",
+    "/config",
+    "/data",
+    "/docs",
     "/mdapi-source",
-    "/setup-tools",
+    "/sfdx-source",
+    "/temp",
+    "/tools",
+    ".forceignore",
     ".gitignore",
     "LICENSE",
     "package.json",
     "README.md",
-    "demo-scratch-def.json",
     "sfdx-project.json"
   ]
 }
