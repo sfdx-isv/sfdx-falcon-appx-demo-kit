@@ -1,8 +1,23 @@
-# Salesforce AppExchange Demo Submission Template
+# SFDX-Falcon: Appexchange Demo Kit (ADK)
 
-This template defines how to submit your AppExchange app to the Salesforce Product Marketing team for consideration as a demo candidate at a Salesforce Customer or Partner event.  Carefully read the instructions in this document to ensure that your app and demo data can be properly installed in a Salesforce demo org.
+The AppExchange Demo Kit (ADK) allows developers to create Demo Projects using Salesforce DX and the SFDX-Falcon CLI Plugin.  
 
-**Intro Video:** [How To Use The AppExchange Demo Submission Template](http://bit.ly/sfdx-flow-for-isvs-falcon-intro)
+To create ADK projects based on this template, make sure you've followed all preqrequiste steps and installed the [SFDX-Falcon Plugin for the Salesforce CLI](https://www.npmjs.com/package/sfdx-falcon). Once this is done, run `sfdx falcon:demo:create` from the command line and follow the prompts.
+
+**Intro Video:** [Getting Started with the AppExchange Demo Kit](http://bit.ly/sfdx-flow-for-isvs-falcon-intro)
+
+
+## License
+
+SFDX-Falcon and the AppExchange Demo Kit (ADK) are made available under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## Getting Started
+
+These instructions will help you clone an AppExchange Demo Kit (ADK) starter project to your local machine and explain the basics of customizing the Demo Recipe and other files to create your own demo.  You'll also learn how to distribute your project to others once your ADK project is up and running.
+
+If your environment meets all the prerequisites, setup and customization of this template should only take 5-10 minutes.
+
 
 ## Prerequisites
 
@@ -13,11 +28,26 @@ Before getting started, your Salesforce and Local environments should meet the f
 
 | Prerequisite                        | Reason                                                  | More Info                              |
 |:------------------------------------|:--------------------------------------------------------|:---------------------------------------|
-| Create an FSC Trial Org             | Required for testing your demo installation scripts     | [FSC 30-Day Trial Org Signup][1]       |
-| Create a Managed Package            | Required for distributing your app on the AppExchange   | [Create Salesforce Packages][4]        |
+| Access to a Developer Hub           | Required for creating scratch orgs                      | [Enable the Dev Hub in Your Org][1]    |
+| Create Salesforce DX Users          | Required for developers to access your Dev Hub          | [Add Salesforce DX Users][1a]          |
+| Access to a Packaging Org           | Optional if creating managed/unmanaged packages         | [Overview of Salesforce Packages][2]   |
 
-[1]: https://www.salesforce.com/form/signup/financial-services-cloud-trial.jsp  "FSC 30-Day Trial Org"
-[4]: http://bit.ly/create-a-salesforce-package  "Create Salesforce Packages"
+[1]: http://bit.ly/enable-dev-hub               "Enable the Dev Hub in Your Org"
+[1a]: http://bit.ly/add-sfdx-users-to-devhub    "Add Salesforce DX Users"
+[2]: http://bit.ly/packaging-overview           "Overview of Packages"
+
+
+### GitHub Environment Prerequisites
+
+| Prerequisite                        | Reason                                                          | More Info                                   |
+|:------------------------------------|:----------------------------------------------------------------|:--------------------------------------------|
+| Create a new GitHub repository      | Required for publication / sharing of your ADK project          | [Create a GitHub Repo][3]                   |
+| Invite collaborators (personal)     | Optional. Support team development with a personal account      | [Invite Collaborators (personal)][4]        |
+| Invite collaborators (organization) | Optional. Support team development with an organization account | [Invite Collaborators (organization)][5]    |
+
+[3]: http://bit.ly/create-a-github-repo                   "Create a GitHub Repo"
+[4]: http://bit.ly/github-invite-personal-collaborators   "Invite Collaborators to a Personal Repo"
+[5]: http://bit.ly/github-manage-organization-access      "Manage Individual Access to Organization Repository"
 
 
 ### Local Environment Prerequisites
@@ -31,14 +61,42 @@ Before getting started, your Salesforce and Local environments should meet the f
 [7]: http://bit.ly/install-salesforce-cli   "Install the Salesforce CLI"
 
 ### Important Note for Windows Users
-The commands used in this document and (more importantly) the shell scripts provided in `setup-tools` use syntax supported by the Bash shell (and its cohorts, like Zsh).
+The core functionality of the ADK is driven by the SFDX-Falcon CLI Plugin which runs cross-platform on Mac, Linux, and Windows.  There are, however, optional shell scripts provided in the `tools` directory that use syntax supported by the Bash shell (and its cohorts, like Zsh).
 
 Windows 10 users can enable the "Windows Subsystem for Linux" feature and install the Bash shell.  There's a great walkthrough that shows you [How to Install and Use the Linux Bash Shell on Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10) over at HowToGeek.com.  
 
 
-## Step One: Connect the Salesforce CLI to your FSC Trial Org
+## Step One: Create a Public GitHub Repository
 
-In order to test your demo installation scripts, you will need to connect the Salesforce CLI to your FSC 30-Day Trial Org.  To do this, execute the following shell command.
+Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so the first step when creating a new ADK project is creating a new, empty, public repository on GitHub.
+
+### Create a New Repository:
+
+![Create a New Repository](https://drive.google.com/uc?export=view&id=1ENOiIj_-yfwXTGo365qgfms7QQGanWmr)
+
+
+1. Go to https://github.com/new
+    *  Must be logged into GitHub first
+2. Choose a name for your ADK project
+    *  Only letters, numbers, hyphens, and underscores are allowed
+    *  Using all lowercase letters is strongly recommended
+3. Add a description for your ADK project
+4. Choose "Public" so your demo can be distributed to others
+5. Make sure that you **do not** initialize the repository with a README, add .gitignore, or add a license.  The SFDX-Falcon plugin will create these for you.
+6. Click "Create Repository".
+
+### Copy the Git Remote URI (https only)
+
+![Create a New Repository](https://drive.google.com/uc?export=view&id=1SQQH19xb6o_RWhnRspytSjgNBNSo1v08)
+
+1. Click the "HTTPS" button
+    *  The ADK Setup Wizard does not support Git Remote URIs that use the SSH protocol
+2. The URL shown here is the Git Remote URI for your new repository
+3. Click the "copy to clipboard" button to automatically copy the Git Remote URI to your clipboard
+
+
+## Step Two: Use the SFDX-Falcon CLI Plugin to Create an ADK Project
+
 
 ```
 # force:auth:web:login
@@ -48,7 +106,7 @@ sfdx force:auth:web:login -a PartnerDemoOrg
 IMPORTANT: If you get a new FSC 30-day Trial Org you must re-run this command to ensure that your CLI is authenticated to the correct org.
 
 
-## Step Two: Clone This Repository to Your Local Machine
+## Step Two: Install the SFDX-Falcon CLI Plugin
 
 Click the "Clone or Download" button near the top right of this repository, then click the "Copy to Clipboard" button next to the repository URI.  You will use that URI in one of the following commands.
 
