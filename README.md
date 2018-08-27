@@ -1,4 +1,4 @@
-# SFDX-Falcon: Appexchange Demo Kit (ADK)
+# SFDX-Falcon: AppExchange Demo Kit (ADK)
 
 The AppExchange Demo Kit (ADK) allows developers to create Demo Projects using Salesforce DX and the SFDX-Falcon CLI Plugin.  
 
@@ -66,7 +66,36 @@ The core functionality of the ADK is driven by the SFDX-Falcon CLI Plugin which 
 Windows 10 users can enable the "Windows Subsystem for Linux" feature and install the Bash shell.  There's a great walkthrough that shows you [How to Install and Use the Linux Bash Shell on Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10) over at HowToGeek.com.  
 
 
-## Step One: Create a Public GitHub Repository
+## Step One: Install the SFDX-Falcon CLI Plugin
+
+The AppExchange Demo Kit (ADK) is part of the SFDX-Falcon CLI Plugin.  Once you've completed the *local environment prerequisites* (listed above), open a terminal (command prompt) and enter the following:
+
+```
+$ sfdx plugins:install sfdx-falcon
+```
+
+You should see something similar to this:
+
+![Install the CLI Plugin](https://drive.google.com/uc?export=view&id=1h6iUbZXc3XRJrhE-8uAy_HkqH1d57XBj)
+
+1. The command `sfdx plugins:install` lets the Salesforce CLI know that you want to install a plugin
+2. The SFDX-Falcon plugin has not been digitially signed (yet), so you will need to acknowledge the warning to continue the installation
+
+## Step Two: Create an ADK-Projects Directory
+
+Create a directory for your AppExchange Demo Kit (ADK) projects and change into the new directory.
+
+```
+$ cd ~
+$ mkdir ADK-Projects
+$ cd ADK-Projects
+```
+
+You should see something similar to this:
+
+![Create ADK-Projects Directory](https://drive.google.com/uc?export=view&id=1QMj2C7zVmnFrfo9Y0_Kju4CnMIayIaW3)
+
+## Step Three: Create a Public GitHub Repository
 
 Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so the first step when creating a new ADK project is creating a new, empty, public repository on GitHub.
 
@@ -85,9 +114,9 @@ Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so t
 5. Make sure that you **do not** initialize the repository with a README, add .gitignore, or add a license.  The SFDX-Falcon plugin will create these for you.
 6. Click "Create Repository".
 
-### Copy the Git Remote URI (https only)
+### Copy the Git Remote URI (https only):
 
-![Create a New Repository](https://drive.google.com/uc?export=view&id=1SQQH19xb6o_RWhnRspytSjgNBNSo1v08)
+![Copy the Git Remote URI](https://drive.google.com/uc?export=view&id=1SQQH19xb6o_RWhnRspytSjgNBNSo1v08)
 
 1. Click the "HTTPS" button
     *  The ADK Setup Wizard does not support Git Remote URIs that use the SSH protocol

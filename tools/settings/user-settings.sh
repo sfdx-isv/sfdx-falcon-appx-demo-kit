@@ -24,7 +24,6 @@ DEMO_PRIMARY_USERNAME_BASE="primary@demo.org"
 DEMO_SECONDARY_USERNAME_BASE="secondary@demo.org"
 
 
-
 # Indicate that the user config variables have been successfully set. DO NOT MODIFY.
 USER_CONFIG_VARS_SET="true"
 
