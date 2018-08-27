@@ -72,7 +72,7 @@ Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so t
 
 ### Create a New Repository:
 
-> ![Create a New Repository](https://drive.google.com/uc?export=view&id=1ENOiIj_-yfwXTGo365qgfms7QQGanWmr)
+![Create a New Repository](https://drive.google.com/uc?export=view&id=1ENOiIj_-yfwXTGo365qgfms7QQGanWmr)
 
 
 1. Go to https://github.com/new
