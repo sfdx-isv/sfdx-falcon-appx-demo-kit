@@ -1,8 +1,6 @@
-# Prerequisites to Working with the AppExchange Demo Kit (ADK)
+# Prerequisites for Working with the AppExchange Demo Kit (ADK)
 
 To effectively use the AppExchange Demo Kit (ADK), your Salesforce, GitHub, and Local development environments must meet the following prerequisites.
-
-**Intro Video:** [AppExchange Demo Kit Prerequisites](http://bit.ly/sfdx-flow-for-isvs-falcon-intro)
 
 
 ## Salesforce Environment Prerequisites
