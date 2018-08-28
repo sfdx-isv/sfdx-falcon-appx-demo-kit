@@ -23,7 +23,7 @@ To effectively use the AppExchange Demo Kit (ADK), your Salesforce, GitHub, and 
 | Prerequisite                        | Reason                                                           | More Info                                   |
 |:------------------------------------|:-----------------------------------------------------------------|:--------------------------------------------|
 | Create a GitHub account             | Required for publication / sharing of your ADK project on GitHub | [Join GitHub (free account signup)][3]      |
-| Install / configure Git locally     | Required to use Git locally and with Git remotes like GitHub     | [Set up Git][3a]
+| Install / configure Git locally     | Required to use Git locally and with Git remotes like GitHub     | [Set up Git][3a]                            |
 | Invite collaborators (personal)     | Optional. Support team development with a personal account       | [Invite Collaborators (personal)][4]        |
 | Invite collaborators (organization) | Optional. Support team development with an organization account  | [Invite Collaborators (organization)][5]    |
 
