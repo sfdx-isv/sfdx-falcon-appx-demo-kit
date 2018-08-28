@@ -5,9 +5,10 @@
   "recipeVersion":  "1.0.0",
   "schemaVersion":  "0.1.2",
   "options":  {
-    "haltOnError":    true,
-    "skipGroups":     [],
-    "skipActions":    [],
+    "haltOnError":      true,
+    "noCustomInstall":  true,
+    "skipGroups":       [],
+    "skipActions":      [],
     "targetOrgs": [
       {
         "orgName":        "Scratch Org Demo",
@@ -15,13 +16,6 @@
         "description":    "Installs demo in a Scratch Org",
         "isScratchOrg":   true,
         "scratchDefJson": "demo-scratch-def.json"
-      },
-      {
-        "orgName":        "Trial Org Demo",
-        "alias":          "<%-finalAnswers.producerAlias%>_ee-trial-demo",
-        "description":    "Installs demo in an EE Trial Org",
-        "isScratchOrg":   false,
-        "orgReqsJson":    "trial-org-reqs.json"
       }
     ]
   },
