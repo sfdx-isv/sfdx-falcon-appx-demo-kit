@@ -2,9 +2,9 @@
 
 The AppExchange Demo Kit (ADK) allows Salesforce developers to create projects that can automatically build build rich, powerful, and complex demo orgs.    
 
-Salesforce Administrators, Business Analysts, and others who may have stayed far away from command-line tools will be able to clone and build your ADK project by typing just one line at the command prompt.  
-
 PLACEHOLDER FOR ANIMATED GIF
+
+Salesforce Administrators, Business Analysts, and others who may have stayed far away from command-line tools will be able to clone and build your ADK project by typing just one line at the command prompt.  
 
 
 ## Getting Started
