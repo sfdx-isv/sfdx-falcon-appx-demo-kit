@@ -1,7 +1,7 @@
 {
   "name": "sfdx-falcon-appx-demo-kit",
   "description": "Specialized project scaffolding for creating an AppExchange Demo Kit (ADK) Project using Salesforce DX and the SFDX-Falcon CLI Plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Vivek M. Chawla @VivekMChawla",
   "license": "MIT",
   "bugs": "https://github.com/sfdx-isv/sfdx-falcon-appx-demo-kit/issues",
