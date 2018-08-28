@@ -106,10 +106,10 @@
         },
         {
           "stepName":     "Create Secondary Demo User",
-          "description":  "Creates a demo user based on secondary-demo-user.json",
+          "description":  "Creates a demo user based on demo-user-secondary.json",
           "action":       "create-user",
           "options": {
-            "definitionFile": "secondary-demo-user.json",
+            "definitionFile": "demo-user-secondary.json",
             "sfdxUserAlias":  "<%-finalAnswers.producerAlias%>_secondary-demo-user"
           }
         }
