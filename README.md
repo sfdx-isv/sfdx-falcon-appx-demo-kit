@@ -1,69 +1,21 @@
 # SFDX-Falcon: AppExchange Demo Kit (ADK)
 
-The AppExchange Demo Kit (ADK) allows developers to create Demo Projects using Salesforce DX and the SFDX-Falcon CLI Plugin.  
+The AppExchange Demo Kit (ADK) allows Salesforce developers to create projects that can automatically build build rich, powerful, and complex demo orgs.    
 
-To create ADK projects based on this template, make sure you've followed all preqrequiste steps and installed the [SFDX-Falcon Plugin for the Salesforce CLI](https://www.npmjs.com/package/sfdx-falcon). Once this is done, run `sfdx falcon:demo:create` from the command line and follow the prompts.
+Salesforce Administrators, Business Analysts, and others who may have stayed far away from command-line tools will be able to clone and build your ADK project by typing just one line at the command prompt.  
 
-**Intro Video:** [Getting Started with the AppExchange Demo Kit](http://bit.ly/sfdx-flow-for-isvs-falcon-intro)
-
-
-## License
-
-SFDX-Falcon and the AppExchange Demo Kit (ADK) are made available under the MIT License - see the [LICENSE](LICENSE) file for details.
+PLACEHOLDER FOR ANIMATED GIF
 
 
 ## Getting Started
 
-These instructions will help you clone an AppExchange Demo Kit (ADK) starter project to your local machine and explain the basics of customizing the Demo Recipe and other files to create your own demo.  You'll also learn how to distribute your project to others once your ADK project is up and running.
+These instructions will help you install the [SFDX-Falcon CLI Plugin](https://www.npmjs.com/package/sfdx-falcon), clone an AppExchange Demo Kit (ADK) starter project, distribute your first ADK project to others.  
 
-If your environment meets all the prerequisites, setup and customization of this template should only take 5-10 minutes.
+If your environment already meets all the prerequisites, following this Getting Started guide should only take 10-15 minutes.
 
 
 ## Prerequisites
-
-Before getting started, your Salesforce and Local environments should meet the following prerequisites.
-
-
-### Salesforce Environment Prerequisites
-
-| Prerequisite                        | Reason                                                  | More Info                              |
-|:------------------------------------|:--------------------------------------------------------|:---------------------------------------|
-| Access to a Developer Hub           | Required for creating scratch orgs                      | [Enable the Dev Hub in Your Org][1]    |
-| Create Salesforce DX Users          | Required for developers to access your Dev Hub          | [Add Salesforce DX Users][1a]          |
-| Access to a Packaging Org           | Optional if creating managed/unmanaged packages         | [Overview of Salesforce Packages][2]   |
-
-[1]: http://bit.ly/enable-dev-hub               "Enable the Dev Hub in Your Org"
-[1a]: http://bit.ly/add-sfdx-users-to-devhub    "Add Salesforce DX Users"
-[2]: http://bit.ly/packaging-overview           "Overview of Packages"
-
-
-### GitHub Environment Prerequisites
-
-| Prerequisite                        | Reason                                                          | More Info                                   |
-|:------------------------------------|:----------------------------------------------------------------|:--------------------------------------------|
-| Create a new GitHub repository      | Required for publication / sharing of your ADK project          | [Create a GitHub Repo][3]                   |
-| Invite collaborators (personal)     | Optional. Support team development with a personal account      | [Invite Collaborators (personal)][4]        |
-| Invite collaborators (organization) | Optional. Support team development with an organization account | [Invite Collaborators (organization)][5]    |
-
-[3]: http://bit.ly/create-a-github-repo                   "Create a GitHub Repo"
-[4]: http://bit.ly/github-invite-personal-collaborators   "Invite Collaborators to a Personal Repo"
-[5]: http://bit.ly/github-manage-organization-access      "Manage Individual Access to Organization Repository"
-
-
-### Local Environment Prerequisites
-
-| Prerequisite                        | Reason                                                  | More Info                              |
-|:------------------------------------|:--------------------------------------------------------|:---------------------------------------|
-| OS, developer toolset, IDE and VCS  | Required by the Salesforce CLI                          | [Salesforce DX System Requirements][6] |
-| Install the Salesforce CLI          | Required by the demo installation scripts               | [Install the Salesforce CLI][7]        |
-
-[6]: http://bit.ly/sfdx-system-requirements "Salesforce DX System Requirements"
-[7]: http://bit.ly/install-salesforce-cli   "Install the Salesforce CLI"
-
-### Important Note for Windows Users
-The core functionality of the ADK is driven by the SFDX-Falcon CLI Plugin which runs cross-platform on Mac, Linux, and Windows.  There are, however, optional shell scripts provided in the `tools` directory that use syntax supported by the Bash shell (and its cohorts, like Zsh).
-
-Windows 10 users can enable the "Windows Subsystem for Linux" feature and install the Bash shell.  There's a great walkthrough that shows you [How to Install and Use the Linux Bash Shell on Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10) over at HowToGeek.com.  
+Before getting started, please make your Salesforce, GitHub, and Local environments meet [these prerequisites](PREREQS.md).
 
 
 ## Step One: Install the SFDX-Falcon CLI Plugin
@@ -124,28 +76,37 @@ Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so t
 3. Click the "copy to clipboard" button to automatically copy the Git Remote URI to your clipboard
 
 
-## Step Two: Use the SFDX-Falcon CLI Plugin to Create an ADK Project
+## Step Four: Use the SFDX-Falcon CLI Plugin to Create an ADK Project
 
-
-```
-# force:auth:web:login
-# -a --SETALIAS                   Set an alias for the authenticated org
-sfdx force:auth:web:login -a PartnerDemoOrg
-```
-IMPORTANT: If you get a new FSC 30-day Trial Org you must re-run this command to ensure that your CLI is authenticated to the correct org.
-
-
-## Step Two: Install the SFDX-Falcon CLI Plugin
-
-Click the "Clone or Download" button near the top right of this repository, then click the "Copy to Clipboard" button next to the repository URI.  You will use that URI in one of the following commands.
+Start the AppExchange Demo Kit project setup wizard by executing `falcon:demo:create` from the command line.
 
 ```
-# Clone this Git Repository
-git clone PASTE_THE_REPOSITORY_URI_HERE
+$ sfdx falcon:demo:create
+```
+
+You should see something similar to this:
+
+![Run falcon:demo:create from the CLI](https://drive.google.com/uc?export=view&id=1hBeJZ3uCpK0mCFNuIbkW4j7dbeUoOdHz)
+
+1. Run `sfdx falcon:demo:create` from the command line
+2. The SFDX-Falcon plugin will take 1-2 minutes to initialize the AppExchange Demo Kit project wizard
+3. Answer the questions presented to you by the wizard
+    *  **IMPORTANT:** For the question "What is the URI of your Git Remote?", paste the https URL you copied from GitHub in Step Three.
+4. Review the information you provided to the wizard
+5. Confirm that you want to create a new ADK project using these settings
+
+
+## Step Five: Run a Test Build
+
+Content TBD
+
+```
+$ cd uc-demo-app
+$ sfdx falcon:demo:install
 ```
 
 
-## Step Three: Customize Partner-Specific Variables
+## Step Six: Push Your ADK Project to GitHub
 
 The demo installation scripts included in this project are driven by variables defined in `partner-settings.sh`, `shared-settings.sh`, and `salesforce-settings.sh`. You are responsible for setting appropriate values for the following variables in the `partner-settings.sh` file.
 
@@ -232,4 +193,4 @@ Salesforce ISV Partners with questions/comments should join the [FSC Demo Candid
 
 ## License
 
-This repository contains code licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+SFDX-Falcon and the AppExchange Demo Kit (ADK) are made available under the MIT License - see the [LICENSE](LICENSE) file for details.
