@@ -3,23 +3,23 @@
     {"path": "sfdx-source/force-app", "default": true}
   ],
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "<%-userAnswers.sfdcApiVersion%>",
+  "sourceApiVersion": "<%-finalAnswers.sfdcApiVersion%>",
   "plugins": {
     "sfdxFalcon": {
-      "producerAlias"   : "<%-userAnswers.producerAlias%>",
-      "producerName"    : "<%-userAnswers.producerName%>",
-      "projectAlias"    : "<%-userAnswers.projectAlias%>",
-      "projectName"     : "<%-userAnswers.projectName%>",
-      "projectType"     : "<%-userAnswers.projectType%>",
-      "defaultRecipe"   : "<%-userAnswers.defaultRecipe%>",
-      "gitRemoteUri"    : "<%-userAnswers.gitRemoteUri%>",
-      "gitHubUrl"       : "<%-userAnswers.gitHubUrl%>",
-      "projectVersion"  : "<%-userAnswers.projectVersion%>",
-      "schemaVersion"   : "<%-userAnswers.schemaVersion%>",
-      "pluginVersion"   : "<%-userAnswers.pluginVersion%>",
+      "producerAlias"   : "<%-finalAnswers.producerAlias%>",
+      "producerName"    : "<%-finalAnswers.producerName%>",
+      "projectAlias"    : "<%-finalAnswers.projectAlias%>",
+      "projectName"     : "<%-finalAnswers.projectName%>",
+      "projectType"     : "<%-finalAnswers.projectType%>",
+      "defaultRecipe"   : "<%-finalAnswers.defaultRecipe%>",
+      "gitRemoteUri"    : "<%-finalAnswers.gitRemoteUri%>",
+      "gitHubUrl"       : "<%-finalAnswers.gitHubUrl%>",
+      "projectVersion"  : "<%-finalAnswers.projectVersion%>",
+      "schemaVersion"   : "<%-finalAnswers.schemaVersion%>",
+      "pluginVersion"   : "<%-finalAnswers.pluginVersion%>",
       "appxPackage"     : {},
       "appxDemo": {
-        "demoRecipes"   : ["<%-userAnswers.defaultRecipe%>"]
+        "demoRecipes"   : ["<%-finalAnswers.defaultRecipe%>"]
       }
     }			
   }

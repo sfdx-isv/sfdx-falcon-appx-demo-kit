@@ -1,5 +1,5 @@
 {
-  "orgName": "<%-userAnswers.producerName%> Demo Org",
+  "orgName": "<%-finalAnswers.producerName%> Demo Org",
   "country": "US",
   "edition": "Enterprise",
   "description": "ADK Sample Demo Org",

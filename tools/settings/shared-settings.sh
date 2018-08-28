@@ -13,7 +13,7 @@
 #
 #
 # Git Remote URI. SSH or HTTPS URI that points to the Git remote repo used by this project.
-GIT_REMOTE_URI="<%-userAnswers.gitRemoteUri%>"
+GIT_REMOTE_URI="<%-finalAnswers.gitRemoteUri%>"
 
 # Echo the variables set by this script prior to exiting.  Specify "true" or "false".
 ECHO_LOCAL_CONFIG_VARS="true"
