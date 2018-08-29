@@ -1,4 +1,4 @@
-# Prerequisites for Working with the AppExchange Demo Kit (ADK)
+# AppExchange Demo Kit (ADK) - Prerequisites
 
 To effectively use the AppExchange Demo Kit (ADK), your Salesforce, GitHub, and Local development environments must meet the following prerequisites.
 
@@ -45,9 +45,4 @@ To effectively use the AppExchange Demo Kit (ADK), your Salesforce, GitHub, and 
 ## Important Note for Windows Users
 The core functionality of the ADK is driven by the SFDX-Falcon CLI Plugin which runs cross-platform on Mac, Linux, and Windows.  There are, however, optional shell scripts provided in the `tools` directory that use syntax supported by the Bash shell (and its cohorts, like Zsh).
 
-Windows 10 users can enable the "Windows Subsystem for Linux" feature and install the Bash shell.  There's a great walkthrough that shows you [How to Install and Use the Linux Bash Shell on Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10) over at HowToGeek.com.  
-
-
-## License
-
-This repository contains code licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Windows 10 users can enable the "Windows Subsystem for Linux" feature and install the Bash shell.  There's a great walkthrough that shows you [How to Install and Use the Linux Bash Shell on Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10) over at HowToGeek.com.
