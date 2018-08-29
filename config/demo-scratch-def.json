@@ -1,7 +1,7 @@
 {
-  "orgName": "<%-userAnswers.producerName%> Demo Org",
+  "orgName": "<%-finalAnswers.producerName%> Demo Org",
   "country": "US",
-  "edition": "Enterprise",
+  "edition": "Developer",
   "description": "ADK Sample Demo Org",
   "hasSampleData": false,
   "language": "en_US",

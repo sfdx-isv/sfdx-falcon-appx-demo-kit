@@ -5,23 +5,17 @@
   "recipeVersion":  "1.0.0",
   "schemaVersion":  "0.1.2",
   "options":  {
-    "haltOnError":    true,
-    "skipGroups":     [],
-    "skipActions":    [],
+    "haltOnError":      true,
+    "noCustomInstall":  true,
+    "skipGroups":       [],
+    "skipActions":      [],
     "targetOrgs": [
       {
         "orgName":        "Scratch Org Demo",
-        "alias":          "<%-userAnswers.producerAlias%>_scratch-demo",
+        "alias":          "<%-finalAnswers.producerAlias%>_scratch-demo",
         "description":    "Installs demo in a Scratch Org",
         "isScratchOrg":   true,
         "scratchDefJson": "demo-scratch-def.json"
-      },
-      {
-        "orgName":        "Trial Org Demo",
-        "alias":          "<%-userAnswers.producerAlias%>_ee-trial-demo",
-        "description":    "Installs demo in an EE Trial Org",
-        "isScratchOrg":   false,
-        "orgReqsJson":    "trial-org-reqs.json"
       }
     ]
   },
@@ -101,16 +95,16 @@
           "action":       "create-user",
           "options": {
             "definitionFile": "demo-user-primary.json",
-            "sfdxUserAlias":  "<%-userAnswers.producerAlias%>_primary-demo-user"
+            "sfdxUserAlias":  "<%-finalAnswers.producerAlias%>_primary-demo-user"
           }
         },
         {
           "stepName":     "Create Secondary Demo User",
-          "description":  "Creates a demo user based on secondary-demo-user.json",
+          "description":  "Creates a demo user based on demo-user-secondary.json",
           "action":       "create-user",
           "options": {
-            "definitionFile": "secondary-demo-user.json",
-            "sfdxUserAlias":  "<%-userAnswers.producerAlias%>_secondary-demo-user"
+            "definitionFile": "demo-user-secondary.json",
+            "sfdxUserAlias":  "<%-finalAnswers.producerAlias%>_secondary-demo-user"
           }
         }
       ]
