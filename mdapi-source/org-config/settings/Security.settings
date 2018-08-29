@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
-    <networkAccess>
-        <ipRanges>
-            <end>12.0.0.0</end>
-            <start>10.0.0.0</start>
-        </ipRanges>
-        <ipRanges>
-            <end>10.0.0.0</end>
-            <start>8.0.0.0</start>
-        </ipRanges>
-        <ipRanges>
-            <end>8.0.0.0</end>
-            <start>6.0.0.0</start>
-        </ipRanges>
-        <ipRanges>
-            <end>6.0.0.0</end>
-            <start>4.0.0.0</start>
-        </ipRanges>
-        <ipRanges>
-            <end>4.0.0.0</end>
-            <start>2.0.0.0</start>
-        </ipRanges>
-        <ipRanges>
-            <end>2.0.0.0</end>
-            <start>0.0.0.0</start>
-        </ipRanges>
-    </networkAccess>
     <sessionSettings>
-        <disableTimeoutWarning>false</disableTimeoutWarning>
+        <disableTimeoutWarning>true</disableTimeoutWarning>
         <enableCSPOnEmail>true</enableCSPOnEmail>
         <enableCSRFOnGet>true</enableCSRFOnGet>
         <enableCSRFOnPost>true</enableCSRFOnPost>
