@@ -1,17 +1,22 @@
 # SFDX-Falcon: AppExchange Demo Kit (ADK)
 
-The AppExchange Demo Kit (ADK) allows Salesforce developers to create projects that can automatically build build rich, powerful, and complex demo orgs.    
+The AppExchange Demo Kit (ADK) allows Salesforce Developers to build and share rich, dynamic demo orgs in a source-centric manner **without requiring batch files or shell scripts!**
 
 ![AppExchange Demo Kit (ADK) falcon:demo:install](https://drive.google.com/uc?export=view&id=1pHTCkPSmGHzS_FoqidyA400ys6yFV8Am)
 
-Salesforce Administrators, Business Analysts, and others who may have stayed far away from command-line tools will be able to clone and build your ADK project by typing just one line at the command prompt.  
+Salesforce Administrators, Business Analysts, and anyone else who has installed the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) can install your entire ADK Demo with just three simple commands.
 
+```
+$ sfdx falcon:demo:clone https://github.com/VivekMChawla/adk-sample.git
 
-## Getting Started
+$ cd adk-sample
 
-These instructions will help you install the [SFDX-Falcon CLI Plugin](https://www.npmjs.com/package/sfdx-falcon), clone an AppExchange Demo Kit (ADK) starter project, distribute your first ADK project to others.  
+$ sfdx falcon:demo:install
+```
 
-If your environment already meets all the prerequisites, following this Getting Started guide should only take 10-15 minutes.
+**Want to try for yourself?**  These instructions will help you install the [SFDX-Falcon CLI Plugin](https://www.npmjs.com/package/sfdx-falcon), clone an AppExchange Demo Kit (ADK) starter project, distribute your first ADK project to others.  
+
+If your environment already meets all the prerequisites, following this guide should only take about 10 minutes.
 
 
 ## Prerequisites
@@ -98,7 +103,7 @@ You should see something similar to this:
 
 ## Step Five: Run a Test Build
 
-Content TBD
+Change into the ADK project directory that was just created for you, then run `sfdx falcon:demo:install`.`
 
 ```
 $ cd uc-demo-app
@@ -108,87 +113,30 @@ $ sfdx falcon:demo:install
 
 ## Step Six: Push Your ADK Project to GitHub
 
-The demo installation scripts included in this project are driven by variables defined in `partner-settings.sh`, `shared-settings.sh`, and `salesforce-settings.sh`. You are responsible for setting appropriate values for the following variables in the `partner-settings.sh` file.
+If you supplied a valid Git Remote URI during project creation, then your local repository already has a remote it can push to (origin).
 
-**PARTNER_PROJECT_ROOT:** This should be the path to this project on your local machine.
 ```
-# ISV Partner's Project Root
-PARTNER_PROJECT_ROOT=~/projects/my-fsc-demo-setup-project
-```
-
-**DEMO_PACKAGE_VERSION_ID_0X:** Package Version IDs representing ALL of the packages required to demo your app. Package Version ID `01` is always required.  If your app only needs one package for your demo, leave the default value of `NOT_PRESENT` for Package Version IDs `02` through `05`.
-```
-# Package Version ID for the Partner's MAIN packaged app. Must begin with "04t".
-DEMO_PACKAGE_VERSION_ID_01="04t000000000000"
-
-# Package Version ID for the Partner's SECOND packaged app (if applicable). Must begin with "04t".
-DEMO_PACKAGE_VERSION_ID_02="NOT_PRESENT"
-
-# Package Version ID for the Partner's THIRD packaged app (if applicable). Must begin with "04t".
-DEMO_PACKAGE_VERSION_ID_03="NOT_PRESENT"
-
-# Package Version ID for the Partner's FOURTH packaged app (if applicable). Must begin with "04t".
-DEMO_PACKAGE_VERSION_ID_04="NOT_PRESENT"
-
-# Package Version ID for the Partner's FIFTH packaged app (if applicable). Must begin with "04t".
-DEMO_PACKAGE_VERSION_ID_05="NOT_PRESENT"
+$ git push origin master
 ```
 
 
-## Step Four: Customize App, Org, and Data Configuration Metadata 
+## Step Seven: Test Drive Cloning/Installing Your Demo
 
-Final copy TBD.  Main point of this section is to explain that the Partner will need to provide any metadata that will be needed to customize the org, customize their app, and add demo data.
+To see what others experience when consuming your demo, try the following
 
-### Customize Org Configuration Metadata
-Final copy TBD.
-
-### Customize App Configuration Metadata
-Final copy TBD.
-
-### Customize Data Configuration Metadata
-Final copy TBD.
-
-
-## Step Five: Customize Demo Installation Scripts 
-
-Final copy TBD.  Main point of this section is to explain which demo installation scripts the partner will need to customize and what kind of customizations are required.
-
-### Customize Package Install Script
-Final copy TBD.
-
-### Customize Org Config Script
-Final copy TBD.
-
-### Customize App Config Script
-Final copy TBD.
-
-### Customize Data Config Script
-Final copy TBD.
-
-
-## Step Six: Test Each Individual Demo Installation Script
-
-Final copy TBD.  Main point of this section is to explain how to run the individual demo installation scripts, in order, to make sure that everything works correctly.
-
-### How to test script one...
-Final copy TBD.
-
-
-## Step Seven: Test the Combined Demo Installation Script
-
-Final copy TBD.  Main point of this section is to explain how to prepare for, then run the COMBINED demo installation script.  This is the last step towards ensuring that the the Product Marketing team will have a demo that can be easily installed.
-
-
-## Resources
-List of resources TBA
-* [?????](http://wwwgoogle.com) - ????
-* [?????](http://wwwgoogle.com) - ????
-* [?????](http://wwwgoogle.com) - ????
+```
+$ cd ..
+$ sfdx falcon:demo:clone https://github.com/MyGitHubUser/my-demo.git  test-drive
+$ cd test-drive
+$ sfdx falcon:demo:install
+```
 
 
 ## Questions/Comments
 
-Salesforce ISV Partners with questions/comments should join the [FSC Demo Candidate Chatter Group](http://p.force.com) in the Partner Community.  You can also reach out directly to ?????.
+To report bugs or request new features, [create an issue](https://github.com/sfdx-isv/sfdx-falcon-plugin/issues) for the [SFDX-Falcon CLI Plugin](https://github.com/sfdx-isv/sfdx-falcon-plugin) which powers the AppExchange Demo Kit (ADK) and AppExchange Package Kit (APK).
+
+Additional help is available to Salesforce ISV Partners by visiting the [SFDX-Falcon Chatter Group](http://bit.ly/sfdx-falcon-group) in the Partner Community and posting questions there.
 
 
 ## License
