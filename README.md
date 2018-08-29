@@ -138,6 +138,9 @@ To report bugs or request new features, [create an issue](https://github.com/sfd
 
 Additional help is available to Salesforce ISV Partners by visiting the [SFDX-Falcon Chatter Group](http://bit.ly/sfdx-falcon-group) in the Partner Community and posting questions there.
 
+## Acknowledgements
+
+[SFDX-Falcon](https://github.com/sfdx-isv/sfdx-falcon-template), the [SFDX-Falcon Plugin](https://github.com/sfdx-isv/sfdx-falcon-plugin), and the [AppExchange Demo Kit](https://github.com/sfdx-isv/sfdx-falcon-appx-demo-kit) were created by **Vivek M. Chawla** [LinkedIn](https://www.linkedin.com/in/vivekmchawla/) | [Twitter](https://twitter.com/VivekMChawla).
 
 ## License
 
