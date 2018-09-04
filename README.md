@@ -1,6 +1,6 @@
 # SFDX-Falcon: AppExchange Demo Kit (ADK)
 
-The AppExchange Demo Kit (ADK) allows Salesforce Developers to build and share rich, dynamic demo orgs in a source-centric manner **without requiring batch files or shell scripts!**
+The **AppExchange Demo Kit (ADK)** allows Salesforce Developers to build and share rich, dynamic demo orgs in a source-centric manner without requiring batch files or shell scripts!
 
 ![AppExchange Demo Kit (ADK) falcon:adk:install](https://drive.google.com/uc?export=view&id=1pHTCkPSmGHzS_FoqidyA400ys6yFV8Am)
 
@@ -14,7 +14,7 @@ $ cd adk-sample
 $ sfdx falcon:adk:install
 ```
 
-**Want to try for yourself?**  These instructions will help you install the [SFDX-Falcon CLI Plugin](https://www.npmjs.com/package/sfdx-falcon), clone an AppExchange Demo Kit (ADK) starter project, distribute your first ADK project to others.  
+**Want to try for yourself?**  These instructions will help you install the [SFDX-Falcon CLI Plugin](https://www.npmjs.com/package/sfdx-falcon), clone an AppExchange Demo Kit (ADK) starter project, and distribute your first ADK project to others.  
 
 
 ## Step One: Install Prerequisites
@@ -36,8 +36,9 @@ $ sfdx plugins:install sfdx-falcon
 ![Install the CLI Plugin](https://drive.google.com/uc?export=view&id=1h6iUbZXc3XRJrhE-8uAy_HkqH1d57XBj)
 
 **Important Notes:**
-1. The command `sfdx plugins:install` lets the Salesforce CLI know that you want to install a plugin
-2. The SFDX-Falcon plugin has not been digitially signed (yet), so you will need to acknowledge the warning to continue the installation
+1. The command `sfdx plugins:install` pulls the plugin source code directly from the [sfdx-falcon package](https://www.npmjs.com/package/sfdx-falcon), hosted by [NPM](www.npmjs.com)
+2. The SFDX-Falcon Plugin has not been digitially signed (yet), so you will need to acknowledge the warning to continue the installation
+
 
 ## Step Three: Create an ADK-Projects Directory
 
@@ -76,7 +77,7 @@ Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so t
 
 **Important Notes:**
 1. Click the "HTTPS" button
-    *  The ADK Setup Wizard does not support Git Remote URIs that use the SSH protocol
+    *  **IMPORTANT:** The ADK Setup Wizard does not support Git Remote URIs that use the SSH protocol, so you must copy the HTTPS version of your Git Remote URI
 2. The URL shown here is the Git Remote URI for your new repository
 3. Click the "copy to clipboard" button to automatically copy the Git Remote URI to your clipboard
 
@@ -103,7 +104,7 @@ $ sfdx falcon:adk:create
 
 ## Step Six: Run a Test Build
 
-Change into the ADK project directory you just created, then run `sfdx falcon:adk:install`.`
+Change into the ADK project directory you just created, then run `sfdx falcon:adk:install`.  Do so by entering the following:
 
 ```
 $ cd uc-demo-app
@@ -120,17 +121,27 @@ $ git push origin master
 ```
 
 
-## Step Seven: Test Drive Cloning/Installing Your Demo
+## Step Seven: Test Drive Cloning & Installing Your Demo
 
-To see what others experience when consuming your demo, try the following
+To see what others experience when consuming your demo, try the following:
 
 ```
 $ cd ..
 $ sfdx falcon:adk:clone https://github.com/MyGitHubUser/my-demo.git  test-drive
+```
+
+After entering the above, you will go through a breif interview to determien local settings for the project you're about to clone.  Once this process is complete, enter the following:
+
+```
 $ cd test-drive
 $ sfdx falcon:adk:install
 ```
 
+To see the demo that you installed, open the org using the following:
+
+```
+$ sfdx force:org:open
+```
 
 ## Questions/Comments
 
