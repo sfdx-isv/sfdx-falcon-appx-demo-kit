@@ -2,43 +2,44 @@
 
 The AppExchange Demo Kit (ADK) allows Salesforce Developers to build and share rich, dynamic demo orgs in a source-centric manner **without requiring batch files or shell scripts!**
 
-![AppExchange Demo Kit (ADK) falcon:demo:install](https://drive.google.com/uc?export=view&id=1pHTCkPSmGHzS_FoqidyA400ys6yFV8Am)
+![AppExchange Demo Kit (ADK) falcon:adk:install](https://drive.google.com/uc?export=view&id=1pHTCkPSmGHzS_FoqidyA400ys6yFV8Am)
 
-Salesforce Administrators, Business Analysts, and anyone else who has installed the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) can install your entire ADK Demo with just three simple commands.
+Anyone who has installed the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli) and the [SFDX-Falcon Plugin](https://github.com/sfdx-isv/sfdx-falcon-plugin) can install any ADK Demo with three simple commands.
 
 ```
-$ sfdx falcon:demo:clone https://github.com/VivekMChawla/adk-sample.git
+$ sfdx falcon:adk:clone https://github.com/VivekMChawla/adk-sample.git
 
 $ cd adk-sample
 
-$ sfdx falcon:demo:install
+$ sfdx falcon:adk:install
 ```
 
 **Want to try for yourself?**  These instructions will help you install the [SFDX-Falcon CLI Plugin](https://www.npmjs.com/package/sfdx-falcon), clone an AppExchange Demo Kit (ADK) starter project, distribute your first ADK project to others.  
 
-If your environment already meets all the prerequisites, following this guide should only take about 10 minutes.
+
+## Step One: Install Prerequisites
+Before getting started, make your Salesforce, GitHub, and Local environments meet [these prerequisites](PREREQS.md).
+
+Once your environments meet all the prerequisites, following the rest of this guide should only take about 10 minutes.
 
 
-## Prerequisites
-Before getting started, please make your Salesforce, GitHub, and Local environments meet [these prerequisites](PREREQS.md).
+## Step Two: Install the SFDX-Falcon Plugin
 
-
-## Step One: Install the SFDX-Falcon CLI Plugin
-
-The AppExchange Demo Kit (ADK) is part of the SFDX-Falcon CLI Plugin.  Once you've completed the *local environment prerequisites* (listed above), open a terminal (command prompt) and enter the following:
+The AppExchange Demo Kit (ADK) is installed as part of [SFDX-Falcon](https://github.com/sfdx-isv/sfdx-falcon-plugin), a plugin for the [Salesforce CLI](https://developer.salesforce.com/tools/sfdxcli).  Once you've completed the prerequisites from Step One, open a terminal (command prompt) and enter the following:
 
 ```
 $ sfdx plugins:install sfdx-falcon
 ```
 
-You should see something similar to this:
+**You should see something similar to this:**
 
 ![Install the CLI Plugin](https://drive.google.com/uc?export=view&id=1h6iUbZXc3XRJrhE-8uAy_HkqH1d57XBj)
 
+**Important Notes:**
 1. The command `sfdx plugins:install` lets the Salesforce CLI know that you want to install a plugin
 2. The SFDX-Falcon plugin has not been digitially signed (yet), so you will need to acknowledge the warning to continue the installation
 
-## Step Two: Create an ADK-Projects Directory
+## Step Three: Create an ADK-Projects Directory
 
 Create a directory for your AppExchange Demo Kit (ADK) projects and change into the new directory.
 
@@ -52,15 +53,14 @@ You should see something similar to this:
 
 ![Create ADK-Projects Directory](https://drive.google.com/uc?export=view&id=1QMj2C7zVmnFrfo9Y0_Kju4CnMIayIaW3)
 
-## Step Three: Create a Public GitHub Repository
+## Step Four: Create a Public GitHub Repository
 
 Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so the first step when creating a new ADK project is creating a new, empty, public repository on GitHub.
 
 ### Create a New Repository:
-
 ![Create a New Repository](https://drive.google.com/uc?export=view&id=1ENOiIj_-yfwXTGo365qgfms7QQGanWmr)
 
-
+**Important Notes:**
 1. Go to https://github.com/new
     *  Must be logged into GitHub first
 2. Choose a name for your ADK project
@@ -72,28 +72,28 @@ Demos built with the AppExchange Demo Kit (ADK) are distributed via GitHub, so t
 6. Click "Create Repository".
 
 ### Copy the Git Remote URI (https only):
-
 ![Copy the Git Remote URI](https://drive.google.com/uc?export=view&id=1SQQH19xb6o_RWhnRspytSjgNBNSo1v08)
 
+**Important Notes:**
 1. Click the "HTTPS" button
     *  The ADK Setup Wizard does not support Git Remote URIs that use the SSH protocol
 2. The URL shown here is the Git Remote URI for your new repository
 3. Click the "copy to clipboard" button to automatically copy the Git Remote URI to your clipboard
 
 
-## Step Four: Use the SFDX-Falcon CLI Plugin to Create an ADK Project
+## Step Five: Create a New AppExchange Demo Kit (ADK) Project
 
-Start the AppExchange Demo Kit project setup wizard by executing `falcon:demo:create` from the command line.
+Start the AppExchange Demo Kit project setup wizard by executing `falcon:adk:create` from the command line.
 
 ```
-$ sfdx falcon:demo:create
+$ sfdx falcon:adk:create
 ```
 
-You should see something similar to this:
+**You should see something similar to this:**
+![Run falcon:adk:create from the CLI](https://drive.google.com/uc?export=view&id=1hBeJZ3uCpK0mCFNuIbkW4j7dbeUoOdHz)
 
-![Run falcon:demo:create from the CLI](https://drive.google.com/uc?export=view&id=1hBeJZ3uCpK0mCFNuIbkW4j7dbeUoOdHz)
-
-1. Run `sfdx falcon:demo:create` from the command line
+**Important Notes:**
+1. Run `sfdx falcon:adk:create` from the command line
 2. The SFDX-Falcon plugin will take 1-2 minutes to initialize the AppExchange Demo Kit project wizard
 3. Answer the questions presented to you by the wizard
     *  **IMPORTANT:** For the question "What is the URI of your Git Remote?", paste the https URL you copied from GitHub in Step Three.
@@ -101,13 +101,13 @@ You should see something similar to this:
 5. Confirm that you want to create a new ADK project using these settings
 
 
-## Step Five: Run a Test Build
+## Step Six: Run a Test Build
 
-Change into the ADK project directory that was just created for you, then run `sfdx falcon:demo:install`.`
+Change into the ADK project directory you just created, then run `sfdx falcon:adk:install`.`
 
 ```
 $ cd uc-demo-app
-$ sfdx falcon:demo:install
+$ sfdx falcon:adk:install
 ```
 
 
@@ -126,9 +126,9 @@ To see what others experience when consuming your demo, try the following
 
 ```
 $ cd ..
-$ sfdx falcon:demo:clone https://github.com/MyGitHubUser/my-demo.git  test-drive
+$ sfdx falcon:adk:clone https://github.com/MyGitHubUser/my-demo.git  test-drive
 $ cd test-drive
-$ sfdx falcon:demo:install
+$ sfdx falcon:adk:install
 ```
 
 
