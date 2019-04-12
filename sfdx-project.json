@@ -6,10 +6,11 @@
   "sourceApiVersion": "<%-finalAnswers.sfdcApiVersion%>",
   "plugins": {
     "sfdxFalcon": {
-      "producerAlias"   : "<%-finalAnswers.producerAlias%>",
-      "producerName"    : "<%-finalAnswers.producerName%>",
+      "developerAlias"  : "<%-finalAnswers.developerAlias%>",
+      "developerName"   : "<%-finalAnswers.developerName%>",
       "projectAlias"    : "<%-finalAnswers.projectAlias%>",
       "projectName"     : "<%-finalAnswers.projectName%>",
+      "projectFamily"   : "<%-finalAnswers.projectFamily%>",
       "projectType"     : "<%-finalAnswers.projectType%>",
       "defaultRecipe"   : "<%-finalAnswers.defaultRecipe%>",
       "gitRemoteUri"    : "<%-finalAnswers.gitRemoteUri%>",
