@@ -12,7 +12,7 @@
     "targetOrgs": [
       {
         "orgName":        "Scratch Org Demo",
-        "alias":          "<%-finalAnswers.producerAlias%>_scratch-demo",
+        "alias":          "<%-finalAnswers.developerAlias%>_scratch-demo",
         "description":    "Installs demo in a Scratch Org",
         "isScratchOrg":   true,
         "scratchDefJson": "demo-scratch-def.json"
@@ -95,7 +95,7 @@
           "action":       "create-user",
           "options": {
             "definitionFile": "demo-user-primary.json",
-            "sfdxUserAlias":  "<%-finalAnswers.producerAlias%>_primary-demo-user"
+            "sfdxUserAlias":  "<%-finalAnswers.developerAlias%>_primary-demo-user"
           }
         },
         {
@@ -104,7 +104,7 @@
           "action":       "create-user",
           "options": {
             "definitionFile": "demo-user-secondary.json",
-            "sfdxUserAlias":  "<%-finalAnswers.producerAlias%>_secondary-demo-user"
+            "sfdxUserAlias":  "<%-finalAnswers.developerAlias%>_secondary-demo-user"
           }
         }
       ]
