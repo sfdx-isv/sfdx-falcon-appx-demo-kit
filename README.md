@@ -130,7 +130,7 @@ $ cd ..
 $ sfdx falcon:adk:clone https://github.com/MyGitHubUser/my-demo.git  test-drive
 ```
 
-After entering the above, you will go through a breif interview to determien local settings for the project you're about to clone.  Once this process is complete, enter the following:
+After entering the above, you will go through a brief interview to determine local settings for the project you're about to clone.  Once this process is complete, enter the following:
 
 ```
 $ cd test-drive
